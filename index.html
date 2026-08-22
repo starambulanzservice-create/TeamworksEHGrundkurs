@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EH-Gruppenarbeit</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+    }
+
+    .karte {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #b00020;
+    }
+
+    .fall {
+      background: #f7f7f7;
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+
+    .hinweis {
+      margin-top: 25px;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="karte">
+
+  <h1>🚑 EH-Gruppenarbeit</h1>
+
+  <p>
+    Bearbeitet gemeinsam den folgenden Einsatz.
+  </p>
+
+  <div class="fall">
+
+    <h2 id="titel"></h2>
+
+    <p id="situation"></p>
+
+  </div>
+
+  <h3>Euer Auftrag</h3>
+
+  <ol>
+    <li>Beurteilt die Situation.</li>
+    <li>Welche Gefahren bestehen?</li>
+    <li>Welche Erste-Hilfe-Maßnahmen sind erforderlich?</li>
+    <li>In welcher Reihenfolge handelt ihr?</li>
+    <li>Bereitet eine kurze Vorstellung eures Vorgehens vor.</li>
+  </ol>
+
+  <p class="hinweis">
+    Dieser Einsatz wechselt automatisch alle 12 Stunden.
+  </p>
+
+</div>
+
+
+<script>
+
+const faelle = [
+
+  {
+    titel: "Fall 1 – Plötzliche Brustschmerzen",
+    situation:
+      "Ein 58-jähriger Mitarbeiter klagt plötzlich über starke Schmerzen und Druck in der Brust. Er wirkt blass und ängstlich und sagt, dass ihm übel sei."
+  },
+
+  {
+    titel: "Fall 2 – Krampfanfall",
+    situation:
+      "Während einer Besprechung fällt eine Person plötzlich vom Stuhl und beginnt am ganzen Körper zu krampfen. Mehrere Personen stehen aufgeregt daneben."
+  },
+
+  {
+    titel: "Fall 3 – Schlaganfall?",
+    situation:
+      "Eine 67-jährige Person spricht plötzlich undeutlich. Beim Versuch zu lächeln hängt ein Mundwinkel herunter. Außerdem kann sie einen Arm nicht richtig heben."
+  },
+
+  {
+    titel: "Fall 4 – Unterzuckerung",
+    situation:
+      "Eine Person mit bekanntem Diabetes wirkt plötzlich zittrig, blass und stark verschwitzt. Sie antwortet zunehmend verwirrt auf Fragen."
+  },
+
+  {
+    titel: "Fall 5 – Akute Atemnot",
+    situation:
+      "Eine Person bekommt plötzlich starke Atemnot. Sie sitzt nach vorne gebeugt, wirkt sehr unruhig und kann nur noch einzelne Wörter sprechen."
+  }
+
+];
+
+
+// aktuelles 12-Stunden-Zeitfenster bestimmen
+const jetzt = new Date();
+
+const zeitblock =
+  Math.floor(jetzt.getTime() / (12 * 60 * 60 * 1000));
+
+
+// Fall auswählen
+const fallNummer =
+  zeitblock % faelle.length;
+
+const aktuellerFall =
+  faelle[fallNummer];
+
+
+// Fall anzeigen
+document.getElementById("titel").textContent =
+  aktuellerFall.titel;
+
+document.getElementById("situation").textContent =
+  aktuellerFall.situation;
+
+</script>
+
+</body>
+</html>
