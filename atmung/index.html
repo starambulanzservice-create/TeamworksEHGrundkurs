@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Teamarbeit Atmungs-Notfälle</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .karte {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #b00020;
+      margin-bottom: 10px;
+    }
+
+    .untertitel {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .fall {
+      background: #f7f7f7;
+      padding: 22px;
+      border-radius: 10px;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="karte">
+
+  <h1>Teamarbeit „Atmungs-Notfälle“</h1>
+
+  <p class="untertitel">
+    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
+  </p>
+
+  <div class="fall">
+
+    <h2 id="titel"></h2>
+
+    <p id="situation"></p>
+
+  </div>
+
+  <h3>Euer Auftrag</h3>
+
+  <ol>
+    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
+    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
+    <li>Welche Gefahren bestehen für die betroffene Person?</li>
+    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
+    <li>In welcher Reihenfolge handelt ihr?</li>
+    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
+    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
+  </ol>
+
+</div>
+
+
+<script>
+
+const faelle = [
+
+  {
+    titel: "Einsatzsituation 1",
+    situation:
+      "Eine 34-jährige Frau bekommt während einer Besprechung zunehmend Schwierigkeiten beim Atmen. Sie setzt sich aufrecht hin und stützt ihre Arme auf den Oberschenkeln ab. Beim Sprechen fällt auf, dass sie nur noch kurze Sätze formulieren kann und zwischen den Worten immer wieder nach Luft holen muss. Ihre Atmung ist deutlich beschleunigt. Beim Ausatmen ist ein pfeifendes Atemgeräusch zu hören. Die Frau wirkt zunehmend ängstlich und unruhig. Auf Nachfrage berichtet sie, dass bei ihr seit ihrer Jugend Asthma bekannt ist. In ihrer Handtasche befindet sich ein von ihrem Arzt verordnetes Asthmaspray."
+  },
+
+  {
+    titel: "Einsatzsituation 2",
+    situation:
+      "Ein 52-jähriger Mann sitzt während einer gemeinsamen Mittagspause am Tisch und isst. Plötzlich greift er sich an den Hals und steht hektisch auf. Er versucht zu sprechen, kann jedoch kaum einen Ton hervorbringen. Auch kräftiges Husten gelingt ihm nicht mehr. Seine Atmung wirkt stark behindert und sein Gesicht zeigt deutliche Angst. Nach kurzer Zeit verfärben sich seine Lippen leicht bläulich. Der Mann ist zunächst noch bei Bewusstsein, wird jedoch zunehmend unruhiger und schwächer. Die anderen Personen am Tisch wissen nicht, wie sie reagieren sollen."
+  },
+
+  {
+    titel: "Einsatzsituation 3",
+    situation:
+      "Ein 68-jähriger Mann entwickelt während eines Spaziergangs zunehmend starke Atemnot. Er bleibt stehen und setzt sich auf eine nahegelegene Bank. Dort beugt er den Oberkörper nach vorne und stützt die Arme auf den Knien ab. Seine Atmung ist deutlich beschleunigt und angestrengt. Er kann Fragen nur mit einzelnen Worten beantworten. Seine Lippen wirken leicht bläulich und er erscheint erschöpft. Der Mann ist wach und ansprechbar. Auf Nachfrage berichtet er, dass er seit vielen Jahren an einer chronischen Lungenerkrankung leidet und regelmäßig Medikamente zur Erweiterung der Atemwege verwendet. Heute habe sich seine Atemnot innerhalb kurzer Zeit deutlich verschlechtert."
+  }
+
+];
+
+
+// TESTMODUS:
+// aktuell wechselt der Fall alle 30 Sekunden
+
+const jetzt = new Date();
+
+const zeitblock =
+  Math.floor(jetzt.getTime() / (30 * 1000));
+
+
+// Fall auswählen
+
+const fallNummer =
+  zeitblock % faelle.length;
+
+const aktuellerFall =
+  faelle[fallNummer];
+
+
+// Fall anzeigen
+
+document.getElementById("titel").textContent =
+  aktuellerFall.titel;
+
+document.getElementById("situation").textContent =
+  aktuellerFall.situation;
+
+</script>
+
+</body>
+</html>
