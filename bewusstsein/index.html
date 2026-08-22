@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Teamarbeit Bewusstseins-Notfälle</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .karte {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #b00020;
+      margin-bottom: 10px;
+    }
+
+    .untertitel {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .fall {
+      background: #f7f7f7;
+      padding: 22px;
+      border-radius: 10px;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="karte">
+
+  <h1>Teamarbeit „Bewusstseins-Notfälle“</h1>
+
+  <p class="untertitel">
+    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
+  </p>
+
+  <div class="fall">
+
+    <h2 id="titel"></h2>
+
+    <p id="situation"></p>
+
+  </div>
+
+  <h3>Euer Auftrag</h3>
+
+  <ol>
+    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
+    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
+    <li>Welche Gefahren bestehen für die betroffene Person?</li>
+    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
+    <li>In welcher Reihenfolge handelt ihr?</li>
+    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
+    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
+  </ol>
+
+</div>
+
+
+<script>
+
+const faelle = [
+
+  {
+    titel: "Einsatzsituation 1",
+    situation:
+      "Ein 48-jähriger Mann nimmt an einer mehrstündigen Fortbildung teil. Während einer Gruppenarbeit fällt auf, dass er zunehmend unruhig und unkonzentriert wirkt. Seine Hände zittern deutlich und er beginnt stark zu schwitzen. Auf Fragen antwortet er zunächst gereizt, kurze Zeit später jedoch zunehmend verwirrt. Er wirkt blass und sagt, dass ihm schwindelig sei. Der Mann ist noch ansprechbar und kann selbstständig sitzen. Ein anderer Teilnehmer berichtet, dass der Mann an Diabetes erkrankt ist und sich in der Mittagspause Insulin gespritzt habe. Gegessen habe er anschließend offenbar nur sehr wenig."
+  },
+
+  {
+    titel: "Einsatzsituation 2",
+    situation:
+      "Eine 36-jährige Frau steht während einer Veranstaltung plötzlich auf, wirkt für einen kurzen Moment abwesend und fällt anschließend zu Boden. Kurz darauf beginnt ihr gesamter Körper kräftig zu zucken. Arme und Beine bewegen sich unkontrolliert, und die Frau reagiert nicht auf Ansprache. Mehrere umstehende Personen versuchen, zu ihr zu gelangen. Nach ungefähr zwei Minuten lassen die Bewegungen langsam nach. Die Frau bleibt zunächst liegen, atmet selbstständig, wirkt jedoch sehr erschöpft und reagiert nur verzögert auf Ansprache. Eine Begleitperson berichtet, dass es in der Vergangenheit bereits einen ähnlichen Vorfall gegeben habe."
+  },
+
+  {
+    titel: "Einsatzsituation 3",
+    situation:
+      "Ein 63-jähriger Mann wird in einem Aufenthaltsraum regungslos auf dem Boden gefunden. Niemand hat beobachtet, was zuvor passiert ist oder wie lange er dort bereits liegt. Neben ihm befindet sich eine umgestürzte Tasse. Auf laute Ansprache reagiert der Mann nicht. Auch nach vorsichtigem Berühren und Ansprechen zeigt er keine erkennbare Reaktion. Äußerlich sind zunächst keine starken Blutungen oder offensichtlichen schweren Verletzungen zu erkennen. Bei der weiteren Beurteilung stellt ihr fest, dass der Mann selbstständig und regelmäßig atmet. Über Vorerkrankungen oder Medikamente ist den anwesenden Personen nichts bekannt."
+  }
+
+];
+
+
+// TESTMODUS:
+// aktuell wechselt der Fall alle 30 Sekunden
+
+const jetzt = new Date();
+
+const zeitblock =
+  Math.floor(jetzt.getTime() / (30 * 1000));
+
+
+// Fall auswählen
+
+const fallNummer =
+  zeitblock % faelle.length;
+
+const aktuellerFall =
+  faelle[fallNummer];
+
+
+// Fall anzeigen
+
+document.getElementById("titel").textContent =
+  aktuellerFall.titel;
+
+document.getElementById("situation").textContent =
+  aktuellerFall.situation;
+
+</script>
+
+</body>
+</html>
