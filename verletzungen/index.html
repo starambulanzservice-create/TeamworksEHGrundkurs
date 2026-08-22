@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Teamarbeit Verletzungen</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .karte {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      color: #b00020;
+      margin-bottom: 10px;
+    }
+
+    .untertitel {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #444;
+    }
+
+    .fall {
+      background: #f7f7f7;
+      padding: 22px;
+      border-radius: 10px;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="karte">
+
+  <h1>Teamarbeit „Verletzungen“</h1>
+
+  <p class="untertitel">
+    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
+  </p>
+
+  <div class="fall">
+
+    <h2 id="titel"></h2>
+
+    <p id="situation"></p>
+
+  </div>
+
+  <h3>Euer Auftrag</h3>
+
+  <ol>
+    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
+    <li>Welche Verletzung oder Verletzungen vermutet ihr?</li>
+    <li>Welche Gefahren oder Komplikationen könnten bestehen?</li>
+    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
+    <li>In welcher Reihenfolge handelt ihr?</li>
+    <li>Ist ein Notruf erforderlich? Begründet eure Entscheidung.</li>
+    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
+  </ol>
+
+</div>
+
+
+<script>
+
+const faelle = [
+
+  {
+    titel: "Einsatzsituation 1",
+    situation:
+      "Ein 41-jähriger Mann stolpert auf einer Treppe und versucht, sich mit der rechten Hand abzufangen. Anschließend hält er seinen rechten Unterarm dicht am Körper und klagt über starke Schmerzen. Der Unterarm beginnt innerhalb kurzer Zeit anzuschwellen. Bewegungen sind sehr schmerzhaft und der Mann möchte den Arm nicht mehr benutzen. Die Haut ist geschlossen, eine stärkere Blutung ist nicht erkennbar. Der Mann ist wach, ansprechbar und ansonsten in einem stabilen Zustand."
+  },
+
+  {
+    titel: "Einsatzsituation 2",
+    situation:
+      "Eine 56-jährige Frau rutscht auf einem nassen Boden aus und stürzt seitlich zu Boden. Sie klagt über starke Schmerzen im linken Unterschenkel und kann das Bein nicht mehr belasten. Beim Versuch aufzustehen verstärken sich die Schmerzen deutlich. Der Unterschenkel wirkt geschwollen und die Frau möchte ihn nicht bewegen. Eine offene Wunde ist nicht zu sehen. Sie ist wach, ansprechbar und wirkt wegen der Schmerzen sehr angespannt."
+  },
+
+  {
+    titel: "Einsatzsituation 3",
+    situation:
+      "Ein 29-jähriger Mann stürzt beim Joggen auf einen rauen Asphaltweg. Dabei schürft er sich großflächig die Haut am rechten Knie und an der Handfläche auf. Die betroffenen Stellen sind gerötet, verschmutzt und bluten leicht. Kleine Steinchen und Schmutzreste sind in der Wunde sichtbar. Der Mann kann das Bein normal bewegen und auftreten. Er klagt vor allem über Brennen und Schmerzen an den oberflächlichen Hautverletzungen."
+  },
+
+  {
+    titel: "Einsatzsituation 4",
+    situation:
+      "Eine 38-jährige Frau schneidet sich beim Öffnen einer Verpackung mit einem scharfen Messer in die Handfläche. Die Wunde ist mehrere Zentimeter lang und blutet deutlich. Sie hält die verletzte Hand hoch und ist aufgeregt, bleibt aber ansprechbar und orientiert. Fremdkörper sind in der Wunde nicht zu erkennen. Die Finger kann sie grundsätzlich bewegen, allerdings verursacht dies Schmerzen."
+  }
+
+];
+
+
+// TESTMODUS:
+// aktuell wechselt der Fall alle 30 Sekunden
+
+const jetzt = new Date();
+
+const zeitblock =
+  Math.floor(jetzt.getTime() / (30 * 1000));
+
+
+// Fall auswählen
+
+const fallNummer =
+  zeitblock % faelle.length;
+
+const aktuellerFall =
+  faelle[fallNummer];
+
+
+// Fall anzeigen
+
+document.getElementById("titel").textContent =
+  aktuellerFall.titel;
+
+document.getElementById("situation").textContent =
+  aktuellerFall.situation;
+
+</script>
+
+</body>
+</html>
