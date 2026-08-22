@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EH Gruppenarbeit</title>
+
+  <title>Teamarbeit Kreislauf-Notfälle</title>
 
   <style>
     body {
@@ -11,10 +12,11 @@
       background: #f2f4f7;
       margin: 0;
       padding: 20px;
+      color: #222;
     }
 
     .karte {
-      max-width: 600px;
+      max-width: 700px;
       margin: 40px auto;
       background: white;
       padding: 30px;
@@ -24,19 +26,35 @@
 
     h1 {
       color: #b00020;
+      margin-bottom: 10px;
+    }
+
+    .untertitel {
+      font-size: 1.1em;
+      margin-bottom: 25px;
+      color: #444;
     }
 
     .fall {
       background: #f7f7f7;
-      padding: 20px;
+      padding: 22px;
       border-radius: 10px;
       margin-top: 20px;
+      line-height: 1.6;
     }
 
-    .hinweis {
-      margin-top: 25px;
-      font-size: 0.9em;
-      color: #666;
+    h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    h3 {
+      margin-top: 30px;
+    }
+
+    li {
+      margin-bottom: 10px;
+      line-height: 1.5;
     }
   </style>
 </head>
@@ -45,10 +63,10 @@
 
 <div class="karte">
 
-  <h1>🚑 Teamarbeit "Kreislauf-Notfälle"</h1>
+  <h1>Teamarbeit „Kreislauf-Notfälle“</h1>
 
-  <p>
-    Bearbeitet gemeinsam den folgenden Einsatz.
+  <p class="untertitel">
+    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
   </p>
 
   <div class="fall">
@@ -62,16 +80,14 @@
   <h3>Euer Auftrag</h3>
 
   <ol>
-    <li>Beurteilt die Situation.</li>
-    <li>Welche Gefahren bestehen?</li>
-    <li>Welche Erste-Hilfe-Maßnahmen sind erforderlich?</li>
+    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
+    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
+    <li>Welche Gefahren bestehen für die betroffene Person?</li>
+    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
     <li>In welcher Reihenfolge handelt ihr?</li>
-    <li>Bereitet eine kurze Vorstellung eures Vorgehens vor.</li>
+    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
+    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
   </ol>
-
-  <p class="hinweis">
-    Dieser Einsatz wechselt automatisch alle 30 SEK Stunden.
-  </p>
 
 </div>
 
@@ -81,39 +97,29 @@
 const faelle = [
 
   {
-    titel: "Fall 1 – Plötzliche Brustschmerzen",
+    titel: "Einsatzsituation 1",
     situation:
-      "Ein 58-jähriger Mitarbeiter klagt plötzlich über starke Schmerzen und Druck in der Brust. Er wirkt blass und ängstlich und sagt, dass ihm übel sei."
+      "Ein 59-jähriger Mann sitzt während einer Besprechung plötzlich sehr unruhig auf seinem Stuhl. Er berichtet über seit etwa zehn Minuten bestehende starke Schmerzen und ein ausgeprägtes Druckgefühl hinter dem Brustbein. Die Beschwerden strahlen in seinen linken Arm und teilweise in den Unterkiefer aus. Er wirkt blass, seine Haut ist kühl und schweißig. Außerdem klagt er über Übelkeit und zunehmende Schwäche. Der Mann ist ansprechbar und kann Fragen beantworten, wirkt jedoch sehr ängstlich. Aus dem Gespräch ist bekannt, dass er wegen Bluthochdruck behandelt wird und seit vielen Jahren raucht."
   },
 
   {
-    titel: "Fall 2 – Krampfanfall",
+    titel: "Einsatzsituation 2",
     situation:
-      "Während einer Besprechung fällt eine Person plötzlich vom Stuhl und beginnt am ganzen Körper zu krampfen. Mehrere Personen stehen aufgeregt daneben."
+      "Eine 71-jährige Frau unterhält sich nach einer Veranstaltung mit anderen Personen. Plötzlich fällt auf, dass sie ihre Worte nur noch undeutlich ausspricht und auf einfache Fragen teilweise unpassend antwortet. Beim Versuch zu lächeln wirkt eine Gesichtshälfte deutlich schwächer. Außerdem kann sie ihren rechten Arm nicht mehr so gut anheben wie den linken und lässt eine Tasse aus der Hand fallen. Die Beschwerden sind vor wenigen Minuten plötzlich aufgetreten. Die Frau ist wach und atmet normal. Eine Begleitperson berichtet, dass sie Medikamente gegen Bluthochdruck und Herzrhythmusstörungen einnimmt."
   },
 
   {
-    titel: "Fall 3 – Schlaganfall?",
+    titel: "Einsatzsituation 3",
     situation:
-      "Eine 67-jährige Person spricht plötzlich undeutlich. Beim Versuch zu lächeln hängt ein Mundwinkel herunter. Außerdem kann sie einen Arm nicht richtig heben."
-  },
-
-  {
-    titel: "Fall 4 – Unterzuckerung",
-    situation:
-      "Eine Person mit bekanntem Diabetes wirkt plötzlich zittrig, blass und stark verschwitzt. Sie antwortet zunehmend verwirrt auf Fragen."
-  },
-
-  {
-    titel: "Fall 5 – Akute Atemnot",
-    situation:
-      "Eine Person bekommt plötzlich starke Atemnot. Sie sitzt nach vorne gebeugt, wirkt sehr unruhig und kann nur noch einzelne Wörter sprechen."
+      "Ein 42-jähriger Mann entwickelt wenige Minuten nach dem Verzehr eines Lebensmittels plötzlich starken Juckreiz und eine zunehmende Rötung der Haut. Kurz darauf schwellen seine Lippen sichtbar an. Er berichtet über ein Engegefühl im Hals, zunehmende Atemnot und Schwindel. Seine Stimme klingt verändert und heiser. Der Mann wirkt zunehmend unruhig, ist blass und beginnt stark zu schwitzen. Er ist noch ansprechbar, fühlt sich jedoch sehr schwach und sagt, dass er das Gefühl habe, gleich ohnmächtig zu werden. Eine Begleitperson berichtet, dass bei ihm eine schwere Allergie bekannt sei."
   }
 
 ];
 
 
-// aktuelles 12-Stunden-Zeitfenster bestimmen
+// TESTMODUS:
+// aktuell wechselt der Fall alle 30 Sekunden
+
 const jetzt = new Date();
 
 const zeitblock =
@@ -121,6 +127,7 @@ const zeitblock =
 
 
 // Fall auswählen
+
 const fallNummer =
   zeitblock % faelle.length;
 
@@ -129,6 +136,7 @@ const aktuellerFall =
 
 
 // Fall anzeigen
+
 document.getElementById("titel").textContent =
   aktuellerFall.titel;
 
