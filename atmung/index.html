@@ -16,17 +16,29 @@
     }
 
     .karte {
-      max-width: 720px;
-      margin: 40px auto;
+      max-width: 750px;
+      margin: 30px auto;
       background: white;
       padding: 30px;
       border-radius: 16px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
 
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo img {
+      max-width: 280px;
+      width: 80%;
+      height: auto;
+    }
+
     h1 {
       color: #b00020;
       margin-bottom: 25px;
+      text-align: center;
     }
 
     .fall {
@@ -34,11 +46,28 @@
       padding: 22px;
       border-radius: 10px;
       line-height: 1.6;
+      margin-bottom: 25px;
     }
 
     .fall h2 {
       margin-top: 0;
       color: #333;
+    }
+
+    .auftrag {
+      margin-top: 25px;
+      padding: 22px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      line-height: 1.5;
+    }
+
+    .auftrag h3 {
+      margin-top: 0;
+    }
+
+    .auftrag li {
+      margin-bottom: 10px;
     }
 
     .zusatz {
@@ -51,7 +80,6 @@
 
     .zusatz h3 {
       margin-top: 0;
-      color: #333;
     }
   </style>
 </head>
@@ -60,16 +88,72 @@
 
 <div class="karte">
 
-  <h1>Teamarbeit „Atmungs-Notfälle“</h1>
-
-  <div class="fall">
-    <h2 id="titel"></h2>
-    <p id="situation"></p>
+  <!-- Logo -->
+  <div class="logo">
+    <img
+      src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+      alt="Logo"
+    >
   </div>
 
+  <h1>Teamarbeit „Atmungs-Notfälle“</h1>
+
+
+  <!-- Zufällig ausgewählte Einsatzsituation -->
+  <div class="fall">
+
+    <h2 id="titel"></h2>
+
+    <p id="situation"></p>
+
+  </div>
+
+
+  <!-- Allgemeiner Arbeitsauftrag -->
+  <div class="auftrag">
+
+    <h3>Euer Auftrag</h3>
+
+    <ol>
+      <li>
+        Beurteilt die Situation und den Zustand der betroffenen Person.
+      </li>
+
+      <li>
+        Welche Auffälligkeiten und Warnzeichen erkennt ihr?
+      </li>
+
+      <li>
+        Welche Gefahren bestehen für die betroffene Person?
+      </li>
+
+      <li>
+        Welche Erste-Hilfe-Maßnahmen führt ihr durch?
+      </li>
+
+      <li>
+        In welcher Reihenfolge handelt ihr?
+      </li>
+
+      <li>
+        Welche Informationen gebt ihr beim Notruf weiter?
+      </li>
+
+      <li>
+        Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.
+      </li>
+    </ol>
+
+  </div>
+
+
+  <!-- Separat ausgeloste Zusatzaufgabe -->
   <div class="zusatz">
+
     <h3>Zusatzaufgabe – Betriebliche Erste Hilfe</h3>
+
     <p id="zusatz"></p>
+
   </div>
 
 </div>
@@ -77,90 +161,107 @@
 
 <script>
 
-/* =========================================
-   POOL 1: EINSATZSITUATIONEN
-   ========================================= */
+/* =========================================================
+   EINSATZSITUATIONEN
+   ========================================================= */
 
 const faelle = [
 
   {
     titel: "Einsatzsituation 1",
+
     situation:
-      "Eine 34-jährige Mitarbeiterin hält während einer Teamsitzung in einem Besprechungsraum eine Präsentation. Plötzlich unterbricht sie ihren Vortrag und berichtet, dass sie zunehmend schlecht Luft bekomme. Sie setzt sich hin, beugt den Oberkörper leicht nach vorne und stützt ihre Arme auf den Oberschenkeln ab. Ihre Atmung ist deutlich beschleunigt. Beim Ausatmen ist ein pfeifendes Atemgeräusch zu hören. Sie kann nur noch kurze Sätze sprechen und wirkt zunehmend ängstlich. Auf Nachfrage berichtet sie, dass bei ihr Asthma bekannt ist und sich ihr ärztlich verordnetes Asthmaspray in ihrer Handtasche befindet."
+      "Eine 34-jährige Mitarbeiterin bekommt während einer Teamsitzung in einem Besprechungsraum zunehmend Schwierigkeiten beim Atmen. Sie unterbricht ihre Präsentation, setzt sich hin und stützt ihre Arme auf den Oberschenkeln ab. Sie kann nur noch kurze Sätze sprechen und muss zwischen den Worten immer wieder nach Luft holen. Ihre Atmung ist deutlich beschleunigt. Beim Ausatmen ist ein pfeifendes Atemgeräusch hörbar. Die Mitarbeiterin wirkt zunehmend ängstlich und unruhig. Auf Nachfrage berichtet sie, dass bei ihr Asthma bekannt ist. Ihr ärztlich verordnetes Asthmaspray befindet sich in ihrer Handtasche."
   },
 
   {
     titel: "Einsatzsituation 2",
+
     situation:
-      "Ein 45-jähriger Mitarbeiter sitzt während seiner Mittagspause mit mehreren Kollegen in der Betriebskantine. Während des Essens greift er sich plötzlich an den Hals und steht hektisch auf. Er versucht zu sprechen, kann jedoch kaum einen Ton hervorbringen. Auch kräftiges Husten gelingt ihm nicht mehr. Er wirkt panisch und bekommt offensichtlich kaum Luft. Nach kurzer Zeit verfärben sich seine Lippen leicht bläulich. Der Mitarbeiter ist zunächst noch bei Bewusstsein, seine Bewegungen werden jedoch zunehmend schwächer."
+      "Ein 45-jähriger Mitarbeiter sitzt während seiner Mittagspause mit mehreren Kollegen in der Betriebskantine. Während des Essens greift er sich plötzlich an den Hals und steht hektisch auf. Er versucht zu sprechen, bringt jedoch kaum einen Ton hervor. Auch kräftiges Husten gelingt ihm nicht mehr. Seine Atmung ist offensichtlich stark behindert. Er wirkt panisch und bekommt zunehmend schlechter Luft. Nach kurzer Zeit verfärben sich seine Lippen leicht bläulich. Der Mitarbeiter ist zunächst noch bei Bewusstsein, seine Bewegungen werden jedoch zunehmend schwächer."
   },
 
   {
     titel: "Einsatzsituation 3",
+
     situation:
-      "Ein 57-jähriger Mitarbeiter kommt morgens vom Firmenparkplatz in Richtung Verwaltungsgebäude. Kurz vor dem Eingang bleibt er stehen und klagt über starke Atemnot. Er setzt sich auf eine niedrige Mauer, beugt den Oberkörper nach vorne und stützt die Arme auf den Knien ab. Seine Atmung ist schnell und deutlich angestrengt. Fragen kann er nur noch mit einzelnen Worten beantworten. Seine Lippen wirken leicht bläulich und er erscheint erschöpft. Er berichtet, dass bei ihm seit mehreren Jahren eine chronische Lungenerkrankung bekannt ist und er regelmäßig Medikamente zur Erweiterung der Atemwege benutzt."
+      "Ein 58-jähriger Mitarbeiter kommt am Morgen vom Firmenparkplatz und ist auf dem Weg in das Bürogebäude. Kurz vor dem Eingang bleibt er stehen und klagt über starke Atemnot. Er setzt sich auf eine niedrige Mauer, beugt den Oberkörper nach vorne und stützt seine Arme auf den Knien ab. Seine Atmung ist schnell und deutlich angestrengt. Fragen kann er nur noch mit einzelnen Worten beantworten. Seine Lippen wirken leicht bläulich und er erscheint zunehmend erschöpft. Der Mann berichtet, dass er seit mehreren Jahren an einer chronischen Lungenerkrankung leidet und regelmäßig Medikamente zur Erweiterung der Atemwege verwendet."
   }
 
 ];
 
 
-/* =========================================
-   POOL 2: ZUSATZAUFGABEN
-   ========================================= */
+/* =========================================================
+   ZUSATZAUFGABEN
+   Die Zusatzaufgabe wird unabhängig vom medizinischen Fall
+   ausgewählt.
+   ========================================================= */
 
 const zusatzfragen = [
 
-  "Wie kann im Betrieb sichergestellt werden, dass Ersthelfer für alle Mitarbeiter schnell erreichbar beziehungsweise auffindbar sind?",
+  "Wie können betriebliche Ersthelfer für andere Mitarbeiter schnell erkennbar beziehungsweise erreichbar gemacht werden?",
 
-  "Wie sollte die Einweisung des Rettungsdienstes organisiert werden, damit die Einsatzkräfte ohne Zeitverlust zum Patienten gelangen?",
+  "Warum ist es wichtig, dass Ersthelfer ihre eigenen Grenzen kennen und bei schweren Notfällen frühzeitig den Rettungsdienst hinzuziehen?",
 
-  "Welche Bedeutung hat die regelmäßige Aus- und Fortbildung betrieblicher Ersthelfer für die Versorgung eines solchen Notfalls?",
+  "Wie kann organisatorisch sichergestellt werden, dass der Rettungsdienst am Betriebseingang empfangen und schnell zum Notfallort geführt wird?",
 
-  "Welche Aufgaben können weitere Kollegen übernehmen, während ein Ersthelfer die betroffene Person versorgt?",
+  "Welche Bedeutung hat eine geeignete Lagerung für einen Patienten mit Atemnot und welche Möglichkeiten hat ein Ersthelfer dabei?",
 
-  "Wie sollte im Betrieb sichergestellt werden, dass auch in abgelegenen Bereichen, auf dem Betriebsgelände oder auf dem Firmenparkplatz schnell Erste Hilfe geleistet werden kann?"
+  "Wie sollte ein Betrieb sicherstellen, dass auch in abgelegenen Arbeitsbereichen schnell Erste Hilfe geleistet und ein Notruf abgesetzt werden kann?"
 
 ];
 
 
-/* =========================================
-   DEMOMODUS
-   Neues Zeitfenster alle 30 Sekunden
-   ========================================= */
+/* =========================================================
+   8-STUNDEN-ZEITFENSTER
+   ========================================================= */
 
 const jetzt = new Date();
 
 const zeitblock =
-  Math.floor(jetzt.getTime() / (30 * 1000));
+  Math.floor(
+    jetzt.getTime() /
+    (8 * 60 * 60 * 1000)
+  );
 
 
-/* =========================================
-   ZWEI GETRENNTE AUSLOSUNGEN
-
-   Die unterschiedlichen Berechnungen sorgen
-   dafür, dass Einsatz und Zusatzaufgabe nicht
-   einfach immer gemeinsam durchlaufen.
-   ========================================= */
+/* =========================================================
+   AUSLOSUNG DES NOTFALLS
+   ========================================================= */
 
 const fallNummer =
-  (zeitblock * 7 + 2) % faelle.length;
+  zeitblock % faelle.length;
+
+const aktuellerFall =
+  faelle[fallNummer];
+
+
+/* =========================================================
+   SEPARATE AUSLOSUNG DER ZUSATZAUFGABE
+
+   Durch eine andere Berechnung wird verhindert, dass
+   eine Zusatzfrage dauerhaft an denselben Fall gekoppelt ist.
+   ========================================================= */
 
 const zusatzNummer =
-  (zeitblock * 11 + 3) % zusatzfragen.length;
+  (zeitblock * 2 + 1) % zusatzfragen.length;
+
+const aktuelleZusatzfrage =
+  zusatzfragen[zusatzNummer];
 
 
-/* =========================================
+/* =========================================================
    AUSGABE
-   ========================================= */
+   ========================================================= */
 
 document.getElementById("titel").textContent =
-  faelle[fallNummer].titel;
+  aktuellerFall.titel;
 
 document.getElementById("situation").textContent =
-  faelle[fallNummer].situation;
+  aktuellerFall.situation;
 
 document.getElementById("zusatz").textContent =
-  zusatzfragen[zusatzNummer];
+  aktuelleZusatzfrage;
 
 </script>
 
