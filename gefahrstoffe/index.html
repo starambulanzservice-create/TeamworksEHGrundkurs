@@ -1,1 +1,301 @@
 
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teamarbeit – Gefahrstoffe</title>
+
+  <style>
+    :root {
+      --star-red: #b00020;
+      --page: #f2f4f7;
+      --case: #f7f7f7;
+      --extra: #eef3f7;
+      --text: #222222;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .karte {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo img {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--star-red);
+      text-align: center;
+      line-height: 1.3;
+    }
+
+    .untertitel {
+      margin: 0 0 30px;
+      color: #666;
+      text-align: center;
+    }
+
+    .bereich {
+      padding: 22px;
+      margin-top: 24px;
+      border-radius: 10px;
+      line-height: 1.7;
+    }
+
+    .fall { background: var(--case); }
+    .zusatz { background: var(--extra); }
+
+    h2, h3 {
+      margin-top: 0;
+      margin-bottom: 12px;
+    }
+
+    .bereich p { margin-top: 0; }
+    .bereich p:last-child { margin-bottom: 0; }
+    #anpassungsaufgabe { margin-top: 20px; }
+
+    @media (max-width: 600px) {
+      body { padding: 10px; }
+      .karte { margin: 10px auto; padding: 20px; }
+      h1 { font-size: 1.6rem; }
+      .bereich { padding: 18px; }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="karte">
+
+    <div class="logo">
+      <img
+        src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+        alt="STAR Ambulanz Service"
+      >
+    </div>
+
+    <h1>Teamarbeit „Gefahrstoffe“</h1>
+    <p class="untertitel">
+      Erste Hilfe im Betrieb – EH-Grundkurs
+    </p>
+
+    <section class="bereich fall">
+      <h2>Fall 1</h2>
+      <p id="situation-1"></p>
+    </section>
+
+    <section class="bereich fall">
+      <h2>Fall 2</h2>
+      <p id="situation-2"></p>
+    </section>
+
+    <section class="bereich zusatz">
+      <h3>
+        Zusatzaufgabe – Organisation der
+        betrieblichen Ersten Hilfe
+      </h3>
+
+      <p id="zusatzfrage"></p>
+
+      <p id="anpassungsaufgabe">
+        <strong>Anpassung an eure Verhältnisse:</strong>
+        <span id="anpassungstext"></span>
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    "use strict";
+
+    const faelle = [
+      {
+        typ: "augenverätzung",
+        situation:
+          "Jürgen Schäfer (43 Jahre) füllt " +
+          "in einem Reinigungsraum ein " +
+          "konzentriertes Reinigungsmittel um. " +
+          "Dabei spritzt ihm etwas Flüssigkeit " +
+          "in das rechte Auge. Das Auge ist " +
+          "stark gerötet, tränt und schmerzt " +
+          "heftig. Herr Schäfer hält es " +
+          "zusammengekniffen. Auf dem Behälter " +
+          "befindet sich ein Gefahrstoffsymbol."
+      },
+      {
+        typ: "hautkontakt",
+        situation:
+          "Nicole Zimmermann (35 Jahre) " +
+          "arbeitet mit einem Reinigungsmittel. " +
+          "Beim Umfüllen gelangt Flüssigkeit " +
+          "auf beide Hände. Kurz darauf " +
+          "brennen die betroffenen Hautstellen " +
+          "und werden deutlich rot. " +
+          "Frau Zimmermann bemerkt erste " +
+          "Hautveränderungen. Welche Inhaltsstoffe " +
+          "das Mittel enthält, weiß sie nicht."
+      },
+      {
+        typ: "verbrühung",
+        situation:
+          "Tobias Keller (30 Jahre) möchte " +
+          "sich in der Büroküche einen Tee " +
+          "zubereiten. Beim Benutzen eines " +
+          "defekten Wasserkochers läuft " +
+          "heißes Wasser über seinen Unterarm. " +
+          "Die Haut wird sofort rot und " +
+          "schmerzt stark. Nach kurzer Zeit " +
+          "bilden sich an einigen Stellen " +
+          "Blasen. Herr Keller ist wach " +
+          "und ansprechbar."
+      },
+      {
+        typ: "co2-loeschmittel",
+        situation:
+          "Bernd Schmitt arbeitet in einem " +
+          "geschlossenen Technikraum. " +
+          "Dort wurde kurz zuvor ein " +
+          "CO₂-Feuerlöscher eingesetzt. " +
+          "Ein Kollege blickt durch das " +
+          "Fenster der Tür und sieht " +
+          "Herrn Schmitt regungslos " +
+          "auf dem Boden liegen. " +
+          "Der Raum ist schlecht einsehbar. " +
+          "Ob die Luft im Raum gefahrlos " +
+          "geatmet werden kann, ist unbekannt."
+      }
+    ];
+
+    const zusatzaufgaben = [
+      {
+        frage:
+          "Welche Bedeutung haben " +
+          "Betriebsanweisungen und " +
+          "Sicherheitsdatenblätter bei " +
+          "Unfällen mit Gefahrstoffen?",
+        anpassung:
+          "Findet heraus, wo in eurem Betrieb " +
+          "Informationen zu verwendeten " +
+          "Gefahrstoffen zu finden sind " +
+          "und wie Ersthelfer darauf " +
+          "zugreifen können."
+      },
+      {
+        frage:
+          "Warum hat der Eigenschutz " +
+          "bei Gefahrstoffunfällen " +
+          "besondere Bedeutung?",
+        anpassung:
+          "Überlegt, welche Arbeitsbereiche " +
+          "in eurem Betrieb besondere " +
+          "Gefahren aufweisen und wie " +
+          "ihr verhindert, dass Helfer " +
+          "selbst gefährdet werden."
+      },
+      {
+        frage:
+          "Welche Einrichtungen und " +
+          "Materialien für die Erste Hilfe " +
+          "bei Gefahrstoffunfällen können " +
+          "im Betrieb erforderlich sein?",
+        anpassung:
+          "Prüft, welche geeigneten " +
+          "Erste-Hilfe-Einrichtungen " +
+          "an euren Arbeitsplätzen " +
+          "vorhanden sind und wie " +
+          "diese schnell erreicht werden."
+      },
+      {
+        frage:
+          "Welche Informationen über " +
+          "einen Gefahrstoff sollten " +
+          "an den Rettungsdienst " +
+          "weitergegeben werden?",
+        anpassung:
+          "Beschreibt, wie ihr in eurem " +
+          "Betrieb die Bezeichnung " +
+          "eines verwendeten Stoffes, " +
+          "das Sicherheitsdatenblatt " +
+          "und Angaben zum Unfall " +
+          "bereitstellen könnt."
+      },
+      {
+        frage:
+          "Warum sind regelmäßige " +
+          "Unterweisungen im Umgang " +
+          "mit Gefahrstoffen wichtig?",
+        anpassung:
+          "Überlegt, wie Mitarbeiter " +
+          "in eurem Betrieb über " +
+          "Gefahrstoffe, Schutzmaßnahmen " +
+          "und das Verhalten bei " +
+          "einem Unfall informiert werden."
+      }
+    ];
+
+    const zeitfenster = Math.floor(
+      Date.now() / (5 * 60 * 60 * 1000)
+    );
+
+    function pseudoZufall(seed) {
+      let wert = seed >>> 0;
+      wert ^= wert << 13;
+      wert ^= wert >>> 17;
+      wert ^= wert << 5;
+      return wert >>> 0;
+    }
+
+    const ersterIndex =
+      pseudoZufall(zeitfenster + 0xa5d3e2) %
+      faelle.length;
+
+    const abstand =
+      1 + pseudoZufall(zeitfenster + 0xf72c49) %
+      (faelle.length - 1);
+
+    const zweiterIndex =
+      (ersterIndex + abstand) % faelle.length;
+
+    const zusatzIndex =
+      pseudoZufall(zeitfenster + 0xb84e16) %
+      zusatzaufgaben.length;
+
+    document.getElementById("situation-1").textContent =
+      faelle[ersterIndex].situation;
+
+    document.getElementById("situation-2").textContent =
+      faelle[zweiterIndex].situation;
+
+    document.getElementById("zusatzfrage").textContent =
+      zusatzaufgaben[zusatzIndex].frage;
+
+    document.getElementById("anpassungstext").textContent =
+      zusatzaufgaben[zusatzIndex].anpassung;
+  </script>
+</body>
+</html>
