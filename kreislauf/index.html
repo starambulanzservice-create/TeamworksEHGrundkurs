@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Teamarbeit – Kreislauf-Notfälle</title>
+  <title>Teamarbeit – Kreislauf</title>
 
   <style>
     :root {
@@ -16,9 +15,7 @@
       --text: #222222;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -70,57 +67,30 @@
       line-height: 1.7;
     }
 
-    .fall {
-      background: var(--case);
-    }
-
-    .zusatz {
-      background: var(--extra);
-    }
+    .fall { background: var(--case); }
+    .zusatz { background: var(--extra); }
 
     h2, h3 {
       margin-top: 0;
       margin-bottom: 12px;
     }
 
-    .bereich p {
-      margin-top: 0;
-    }
-
-    .bereich p:last-child {
-      margin-bottom: 0;
-    }
-
-    #anpassungsaufgabe {
-      margin-top: 20px;
-    }
+    .bereich p { margin-top: 0; }
+    .bereich p:last-child { margin-bottom: 0; }
+    #anpassungsaufgabe { margin-top: 20px; }
 
     @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      .karte {
-        margin: 10px auto;
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      .bereich {
-        padding: 18px;
-      }
+      body { padding: 10px; }
+      .karte { margin: 10px auto; padding: 20px; }
+      h1 { font-size: 1.6rem; }
+      .bereich { padding: 18px; }
     }
   </style>
 </head>
 
 <body>
-
   <main class="karte">
 
-    <!-- Firmenlogo -->
     <div class="logo">
       <img
         src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
@@ -128,27 +98,22 @@
       >
     </div>
 
-    <h1>Teamarbeit „Kreislauf-Notfälle“</h1>
-
+    <h1>Teamarbeit „Kreislauf“</h1>
     <p class="untertitel">
       Erste Hilfe im Betrieb – EH-Grundkurs
     </p>
 
-    <!-- Erster angezeigter Fall -->
     <section class="bereich fall">
-      <h2 id="titel-1"></h2>
+      <h2>Fall 1</h2>
       <p id="situation-1"></p>
     </section>
 
-    <!-- Zweiter angezeigter Fall -->
     <section class="bereich fall">
-      <h2 id="titel-2"></h2>
+      <h2>Fall 2</h2>
       <p id="situation-2"></p>
     </section>
 
-    <!-- Zusatzaufgabe -->
     <section class="bereich zusatz">
-
       <h3>
         Zusatzaufgabe – Organisation der
         betrieblichen Ersten Hilfe
@@ -160,7 +125,6 @@
         <strong>Anpassung an eure Verhältnisse:</strong>
         <span id="anpassungstext"></span>
       </p>
-
     </section>
 
   </main>
@@ -168,166 +132,138 @@
   <script>
     "use strict";
 
-    /*
-      VIER FEST NUMMERIERTE FALLSITUATIONEN
-
-      Die Nummer bleibt immer beim Fall.
-      Zwei unterschiedliche Fälle werden angezeigt.
-    */
-
+    // Vier Fallsituationen mit festen Namen.
     const faelle = [
-
       {
-        titel: "Kreislauf – Fall 1",
-        typ: "brustschmerz",
+        typ: "herzinfarkt",
         situation:
-          "Während einer Besprechung im Büro klagt ein " +
-          "56-jähriger Mitarbeiter plötzlich über starken " +
-          "Druck hinter dem Brustbein. Die Schmerzen ziehen " +
-          "in den linken Arm und den Unterkiefer. Er ist " +
-          "blass, kaltschweißig und ihm ist übel. " +
-          "Er ist ansprechbar, wirkt aber sehr ängstlich. " +
-          "Kollegen wissen, dass er wegen Bluthochdruck " +
-          "behandelt wird."
+          "Thomas Berger (56 Jahre) nimmt an einer " +
+          "Besprechung im Büro teil. Plötzlich klagt " +
+          "er über einen starken Druck hinter dem " +
+          "Brustbein. Die Beschwerden ziehen bis in " +
+          "den linken Arm und in den Unterkiefer. " +
+          "Herr Berger ist auffallend blass, " +
+          "kaltschweißig und ihm ist übel. " +
+          "Er wirkt sehr ängstlich, ist aber wach " +
+          "und ansprechbar. Kollegen wissen, dass " +
+          "er wegen Bluthochdrucks behandelt wird."
       },
-
       {
-        titel: "Kreislauf – Fall 2",
         typ: "schlaganfall",
         situation:
-          "Eine 49-jährige Mitarbeiterin spricht während " +
-          "einer Kaffeepause im Büro plötzlich undeutlich. " +
-          "Ein Mundwinkel hängt herab, und sie kann den " +
-          "rechten Arm kaum anheben. Die Auffälligkeiten " +
-          "sind vor wenigen Minuten aufgetreten. " +
-          "Sie ist wach und atmet normal."
+          "Sabine Hoffmann (49 Jahre) sitzt während " +
+          "einer Kaffeepause mit Kollegen zusammen. " +
+          "Plötzlich spricht sie undeutlich. " +
+          "Ein Mundwinkel hängt sichtbar herab. " +
+          "Als sie nach ihrer Kaffeetasse greifen " +
+          "möchte, fällt auf, dass sie den rechten " +
+          "Arm kaum bewegen kann. Die Beschwerden " +
+          "haben erst vor wenigen Minuten begonnen. " +
+          "Frau Hoffmann ist wach und atmet normal."
       },
-
       {
-        titel: "Kreislauf – Fall 3",
-        typ: "allergie",
+        typ: "allergische-reaktion",
         situation:
-          "Bei einer Feier in der Betriebskantine bekommt " +
-          "ein 38-jähriger Mitarbeiter kurz nach dem Essen " +
-          "starken Juckreiz. Seine Lippen schwellen an, " +
-          "die Stimme wird heiser, und er klagt über Enge " +
-          "im Hals, Atemnot und Schwindel. Er ist noch " +
-          "ansprechbar. Ein Kollege erwähnt eine bekannte " +
-          "Lebensmittelallergie."
+          "Markus Schneider (38 Jahre) isst bei " +
+          "einer Betriebsfeier in der Kantine. " +
+          "Kurz darauf bekommt er starken Juckreiz. " +
+          "Seine Lippen schwellen an, seine Stimme " +
+          "wird heiser und er berichtet, dass sich " +
+          "sein Hals eng anfühlt. Außerdem bekommt " +
+          "er schlechter Luft und ihm wird schwindelig. " +
+          "Herr Schneider ist noch wach. " +
+          "Ein Kollege weiß, dass er eine " +
+          "Lebensmittelallergie hat."
       },
-
       {
-        titel: "Kreislauf – Fall 4",
-        typ: "kollaps",
+        typ: "kreislaufschwaeche",
         situation:
-          "Eine 32-jährige Mitarbeiterin steht nach " +
-          "längerer Arbeit in einer warmen Produktionshalle " +
-          "auf. Ihr wird schwindelig, sie wird auffallend " +
-          "blass und sackt kurz zusammen. Als Kollegen zu " +
-          "ihr kommen, ist sie wieder ansprechbar, aber " +
-          "sehr schwach. Sie hat heute kaum etwas getrunken."
+          "Julia Neumann (32 Jahre) arbeitet an " +
+          "einem warmen Tag in einer Produktionshalle. " +
+          "Als sie nach längerem Sitzen aufsteht, " +
+          "wird ihr plötzlich schwindelig. " +
+          "Sie wird blass und sackt kurz zusammen. " +
+          "Als Kollegen zu ihr kommen, ist sie " +
+          "wieder wach, fühlt sich aber sehr schwach. " +
+          "Frau Neumann erzählt, dass sie heute " +
+          "kaum etwas getrunken hat."
       }
-
     ];
 
-    /*
-      FÜNF ZUSATZAUFGABEN
-      Jede Zusatzaufgabe enthält eine Frage
-      und die Übertragung auf den eigenen Betrieb.
-    */
-
+    // Fünf unabhängig wechselnde Zusatzaufgaben.
     const zusatzaufgaben = [
-
       {
         frage:
-          "Welche Bedeutung hat ein AED in der " +
-          "betrieblichen Ersten Hilfe und wer darf " +
-          "ihn anwenden?",
-
-        anpassung:
-          "Findet heraus, ob euer Betrieb über einen " +
-          "AED verfügt, wo er hängt und wie Kollegen " +
-          "im Notfall dorthin gelangen."
-      },
-
-      {
-        frage:
-          "Wie wird der Rettungsdienst bei einem " +
-          "akuten Kreislaufnotfall schnell zum " +
-          "richtigen Ort geleitet?",
-
-        anpassung:
-          "Wählt einen Raum oder Arbeitsplatz eures " +
-          "Betriebs. Beschreibt den Weg vom Notruf " +
-          "bis zur Übergabe an den Rettungsdienst."
-      },
-
-      {
-        frage:
-          "Wie können Kollegen die Ersthelfer bei " +
+          "Wie können betriebliche Ersthelfer bei " +
           "einem plötzlich auftretenden Kreislaufnotfall " +
-          "unterstützen?",
-
+          "schnell erreicht werden?",
         anpassung:
-          "Verteilt für einen realistischen Notfall " +
-          "in eurem Arbeitsbereich die Aufgaben " +
-          "Notruf, Betreuung, AED holen und Einweisung."
+          "Beschreibt, wie ihr an eurem Arbeitsplatz " +
+          "einen Ersthelfer alarmiert. Überlegt auch, " +
+          "wie dies in abgelegenen Bereichen oder " +
+          "außerhalb der üblichen Arbeitszeiten funktioniert."
       },
-
       {
         frage:
-          "Welche Beobachtungen und zeitlichen Angaben " +
-          "sind für die Übergabe an den Rettungsdienst " +
-          "besonders wichtig?",
-
+          "Warum ist es wichtig, bei einem " +
+          "medizinischen Notfall den Notruf 112 " +
+          "frühzeitig abzusetzen?",
         anpassung:
-          "Überlegt, wie ihr in eurem Betrieb den " +
-          "Beginn der Beschwerden festhalten und " +
-          "die Informationen weitergeben könnt."
+          "Klärt, wer in eurem Betrieb den Notruf " +
+          "übernimmt, welche Ortsangaben benötigt " +
+          "werden und wie der Rettungsdienst " +
+          "eingewiesen wird."
       },
-
       {
         frage:
-          "Wie sind Ersthelfer und Erste-Hilfe-" +
-          "Einrichtungen in eurem Betrieb erreichbar?",
-
+          "Welche Informationen über eine betroffene " +
+          "Person sind für die Übergabe an den " +
+          "Rettungsdienst besonders hilfreich?",
         anpassung:
-          "Prüft für einen konkreten Arbeitsplatz " +
-          "die Erreichbarkeit von Ersthelfern, " +
-          "Verbandkasten und gegebenenfalls AED."
+          "Überlegt, wie ihr in eurem Betrieb " +
+          "den Beginn der Beschwerden, beobachtete " +
+          "Veränderungen und durchgeführte " +
+          "Erste-Hilfe-Maßnahmen weitergeben könnt."
+      },
+      {
+        frage:
+          "Wie können Kollegen eine betroffene " +
+          "Person unterstützen, während ein " +
+          "Ersthelfer die Versorgung übernimmt?",
+        anpassung:
+          "Verteilt für euren Arbeitsbereich " +
+          "sinnvolle Aufgaben, zum Beispiel " +
+          "Notruf absetzen, andere Mitarbeiter " +
+          "fernhalten, Material holen und " +
+          "den Rettungsdienst einweisen."
+      },
+      {
+        frage:
+          "Warum müssen Erste-Hilfe-Leistungen " +
+          "im Betrieb dokumentiert werden?",
+        anpassung:
+          "Findet heraus, wie und wo " +
+          "Erste-Hilfe-Leistungen in eurem " +
+          "Betrieb dokumentiert werden und " +
+          "wer Zugriff auf die vorgesehenen " +
+          "Dokumentationsmöglichkeiten hat."
       }
-
     ];
 
-    /*
-      AUTOMATISCHER WECHSEL ALLE 5 STUNDEN
-
-      Innerhalb eines Zeitfensters erhalten
-      alle Teilnehmer dieselbe Zusammenstellung.
-    */
-
+    // Einheitliches Fünf-Stunden-Zeitfenster.
     const zeitfenster = Math.floor(
       Date.now() / (5 * 60 * 60 * 1000)
     );
 
-    /*
-      DETERMINISTISCHE ZUFALLSFUNKTION
-    */
-
     function pseudoZufall(seed) {
       let wert = seed >>> 0;
-
       wert ^= wert << 13;
       wert ^= wert >>> 17;
       wert ^= wert << 5;
-
       return wert >>> 0;
     }
 
-    /*
-      ZWEI UNTERSCHIEDLICHE FÄLLE AUSWÄHLEN
-    */
-
+    // Zwei verschiedene Fälle.
     const ersterIndex =
       pseudoZufall(zeitfenster + 0x61c8f3) %
       faelle.length;
@@ -339,41 +275,22 @@
     const zweiterIndex =
       (ersterIndex + abstand) % faelle.length;
 
-    /*
-      ZUSATZAUFGABE UNABHÄNGIG AUSWÄHLEN
-    */
-
+    // Unabhängige Zusatzaufgabe.
     const zusatzIndex =
       pseudoZufall(zeitfenster + 0xd19a47) %
       zusatzaufgaben.length;
 
-    /*
-      FALLTITEL UND TEXTE ANZEIGEN
-    */
-
-    document.getElementById("titel-1").textContent =
-      faelle[ersterIndex].titel;
-
     document.getElementById("situation-1").textContent =
       faelle[ersterIndex].situation;
 
-    document.getElementById("titel-2").textContent =
-      faelle[zweiterIndex].titel;
-
     document.getElementById("situation-2").textContent =
       faelle[zweiterIndex].situation;
-
-    /*
-      ZUSATZAUFGABE ANZEIGEN
-    */
 
     document.getElementById("zusatzfrage").textContent =
       zusatzaufgaben[zusatzIndex].frage;
 
     document.getElementById("anpassungstext").textContent =
       zusatzaufgaben[zusatzIndex].anpassung;
-
   </script>
-
 </body>
 </html>
