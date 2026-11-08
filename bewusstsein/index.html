@@ -136,13 +136,13 @@
 
     <!-- Erster angezeigter Fall -->
     <section class="bereich fall">
-      <h2 id="titel-1"></h2>
+      <h2>Fall 1</h2>
       <p id="situation-1"></p>
     </section>
 
     <!-- Zweiter angezeigter Fall -->
     <section class="bereich fall">
-      <h2 id="titel-2"></h2>
+      <h2>Fall 2</h2>
       <p id="situation-2"></p>
     </section>
 
@@ -169,16 +169,15 @@
     "use strict";
 
     /*
-      VIER FEST NUMMERIERTE FALLSITUATIONEN
+      VIER FALLSITUATIONEN MIT FESTEN NAMEN
 
-      Die Nummer bleibt immer beim Fall.
-      Zwei unterschiedliche Fälle werden angezeigt.
+      Die angezeigten Überschriften lauten
+      immer "Fall 1" und "Fall 2".
     */
 
     const faelle = [
 
       {
-        titel: "Bewusstsein – Fall 1",
         typ: "unterzuckerung",
         situation:
           "Michael Seidel (42 Jahre) verhält sich " +
@@ -192,7 +191,6 @@
       },
 
       {
-        titel: "Bewusstsein – Fall 2",
         typ: "krampfanfall",
         situation:
           "Anna Fischer (31 Jahre) bricht im " +
@@ -205,7 +203,6 @@
       },
 
       {
-        titel: "Bewusstsein – Fall 3",
         typ: "bewusstlos-atmung",
         situation:
           "Frank Schulz (54 Jahre) wird im " +
@@ -218,7 +215,6 @@
       },
 
       {
-        titel: "Bewusstsein – Fall 4",
         typ: "bewusstlos-keine-normale-atmung",
         situation:
           "Peter Wagner (60 Jahre) bricht während " +
@@ -364,17 +360,11 @@
       zusatzaufgaben.length;
 
     /*
-      FALLTITEL UND TEXTE ANZEIGEN
+      FALLTEXTE ANZEIGEN
     */
-
-    document.getElementById("titel-1").textContent =
-      faelle[ersterIndex].titel;
 
     document.getElementById("situation-1").textContent =
       faelle[ersterIndex].situation;
-
-    document.getElementById("titel-2").textContent =
-      faelle[zweiterIndex].titel;
 
     document.getElementById("situation-2").textContent =
       faelle[zweiterIndex].situation;
