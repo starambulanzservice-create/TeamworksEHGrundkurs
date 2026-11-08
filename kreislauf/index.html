@@ -4,6 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Teamarbeit – Kreislauf-Notfälle</title>
 
   <style>
@@ -133,15 +134,15 @@
       Erste Hilfe im Betrieb – EH-Grundkurs
     </p>
 
-    <!-- Fallsituation 1 -->
+    <!-- Erster angezeigter Fall -->
     <section class="bereich fall">
-      <h2>Fallsituation 1</h2>
+      <h2 id="titel-1"></h2>
       <p id="situation-1"></p>
     </section>
 
-    <!-- Fallsituation 2 -->
+    <!-- Zweiter angezeigter Fall -->
     <section class="bereich fall">
-      <h2>Fallsituation 2</h2>
+      <h2 id="titel-2"></h2>
       <p id="situation-2"></p>
     </section>
 
@@ -168,12 +169,16 @@
     "use strict";
 
     /*
-      VIER FALLSITUATIONEN
-      Jeweils zwei werden angezeigt.
+      VIER FEST NUMMERIERTE FALLSITUATIONEN
+
+      Die Nummer bleibt immer beim Fall.
+      Zwei unterschiedliche Fälle werden angezeigt.
     */
 
     const faelle = [
+
       {
+        titel: "Kreislauf – Fall 1",
         typ: "brustschmerz",
         situation:
           "Während einer Besprechung im Büro klagt ein " +
@@ -185,7 +190,9 @@
           "Kollegen wissen, dass er wegen Bluthochdruck " +
           "behandelt wird."
       },
+
       {
+        titel: "Kreislauf – Fall 2",
         typ: "schlaganfall",
         situation:
           "Eine 49-jährige Mitarbeiterin spricht während " +
@@ -195,7 +202,9 @@
           "sind vor wenigen Minuten aufgetreten. " +
           "Sie ist wach und atmet normal."
       },
+
       {
+        titel: "Kreislauf – Fall 3",
         typ: "allergie",
         situation:
           "Bei einer Feier in der Betriebskantine bekommt " +
@@ -206,7 +215,9 @@
           "ansprechbar. Ein Kollege erwähnt eine bekannte " +
           "Lebensmittelallergie."
       },
+
       {
+        titel: "Kreislauf – Fall 4",
         typ: "kollaps",
         situation:
           "Eine 32-jährige Mitarbeiterin steht nach " +
@@ -216,71 +227,92 @@
           "ihr kommen, ist sie wieder ansprechbar, aber " +
           "sehr schwach. Sie hat heute kaum etwas getrunken."
       }
+
     ];
 
     /*
       FÜNF ZUSATZAUFGABEN
+      Jede Zusatzaufgabe enthält eine Frage
+      und die Übertragung auf den eigenen Betrieb.
     */
 
     const zusatzaufgaben = [
+
       {
         frage:
           "Welche Bedeutung hat ein AED in der " +
           "betrieblichen Ersten Hilfe und wer darf " +
           "ihn anwenden?",
+
         anpassung:
           "Findet heraus, ob euer Betrieb über einen " +
           "AED verfügt, wo er hängt und wie Kollegen " +
           "im Notfall dorthin gelangen."
       },
+
       {
         frage:
           "Wie wird der Rettungsdienst bei einem " +
           "akuten Kreislaufnotfall schnell zum " +
           "richtigen Ort geleitet?",
+
         anpassung:
           "Wählt einen Raum oder Arbeitsplatz eures " +
           "Betriebs. Beschreibt den Weg vom Notruf " +
           "bis zur Übergabe an den Rettungsdienst."
       },
+
       {
         frage:
           "Wie können Kollegen die Ersthelfer bei " +
           "einem plötzlich auftretenden Kreislaufnotfall " +
           "unterstützen?",
+
         anpassung:
           "Verteilt für einen realistischen Notfall " +
           "in eurem Arbeitsbereich die Aufgaben " +
           "Notruf, Betreuung, AED holen und Einweisung."
       },
+
       {
         frage:
           "Welche Beobachtungen und zeitlichen Angaben " +
           "sind für die Übergabe an den Rettungsdienst " +
           "besonders wichtig?",
+
         anpassung:
           "Überlegt, wie ihr in eurem Betrieb den " +
           "Beginn der Beschwerden festhalten und " +
           "die Informationen weitergeben könnt."
       },
+
       {
         frage:
           "Wie sind Ersthelfer und Erste-Hilfe-" +
           "Einrichtungen in eurem Betrieb erreichbar?",
+
         anpassung:
           "Prüft für einen konkreten Arbeitsplatz " +
           "die Erreichbarkeit von Ersthelfern, " +
           "Verbandkasten und gegebenenfalls AED."
       }
+
     ];
 
     /*
       AUTOMATISCHER WECHSEL ALLE 5 STUNDEN
+
+      Innerhalb eines Zeitfensters erhalten
+      alle Teilnehmer dieselbe Zusammenstellung.
     */
 
     const zeitfenster = Math.floor(
       Date.now() / (5 * 60 * 60 * 1000)
     );
+
+    /*
+      DETERMINISTISCHE ZUFALLSFUNKTION
+    */
 
     function pseudoZufall(seed) {
       let wert = seed >>> 0;
@@ -293,7 +325,7 @@
     }
 
     /*
-      ZWEI UNTERSCHIEDLICHE FÄLLE
+      ZWEI UNTERSCHIEDLICHE FÄLLE AUSWÄHLEN
     */
 
     const ersterIndex =
@@ -308,7 +340,7 @@
       (ersterIndex + abstand) % faelle.length;
 
     /*
-      ZUSATZAUFGABE AUSWÄHLEN
+      ZUSATZAUFGABE UNABHÄNGIG AUSWÄHLEN
     */
 
     const zusatzIndex =
@@ -316,14 +348,24 @@
       zusatzaufgaben.length;
 
     /*
-      INHALTE ANZEIGEN
+      FALLTITEL UND TEXTE ANZEIGEN
     */
+
+    document.getElementById("titel-1").textContent =
+      faelle[ersterIndex].titel;
 
     document.getElementById("situation-1").textContent =
       faelle[ersterIndex].situation;
 
+    document.getElementById("titel-2").textContent =
+      faelle[zweiterIndex].titel;
+
     document.getElementById("situation-2").textContent =
       faelle[zweiterIndex].situation;
+
+    /*
+      ZUSATZAUFGABE ANZEIGEN
+    */
 
     document.getElementById("zusatzfrage").textContent =
       zusatzaufgaben[zusatzIndex].frage;
