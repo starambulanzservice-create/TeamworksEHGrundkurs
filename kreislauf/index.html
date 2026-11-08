@@ -1,149 +1,372 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
-  <title>Teamarbeit Kreislauf-Notfälle</title>
+  <title>Teamarbeit – Kreislauf-Notfälle</title>
 
   <style>
+    :root {
+      --star-red: #b00020;
+      --text: #222;
+      --muted: #5f6670;
+      --page: #f2f4f7;
+      --card: #ffffff;
+      --case: #f7f7f7;
+      --extra: #eef3f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
       margin: 0;
       padding: 20px;
-      color: #222;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .karte {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
+      max-width: 800px;
+      margin: 30px auto;
       padding: 30px;
+      background: var(--card);
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .logo img {
+      width: min(80%, 280px);
+      height: auto;
     }
 
     h1 {
-      color: #b00020;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      color: var(--star-red);
+      text-align: center;
+      line-height: 1.25;
     }
 
     .untertitel {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      color: #444;
+      margin: 0 0 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bereich {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 10px;
+      line-height: 1.65;
     }
 
     .fall {
-      background: #f7f7f7;
-      padding: 22px;
-      border-radius: 10px;
-      margin-top: 20px;
-      line-height: 1.6;
+      background: var(--case);
     }
 
-    h2 {
-      margin-top: 0;
-      color: #333;
+    .zusatz {
+      background: var(--extra);
     }
 
-    h3 {
-      margin-top: 30px;
+    h2, h3 {
+      margin: 0 0 12px;
     }
 
-    li {
-      margin-bottom: 10px;
-      line-height: 1.5;
+    #situation-1,
+    #situation-2,
+    #zusatzfrage,
+    #anpassungsaufgabe {
+      margin: 0;
+    }
+
+    #anpassungsaufgabe {
+      margin-top: 18px;
+    }
+
+    .anpassungs-ueberschrift {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .karte {
+        margin: 10px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .bereich {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="karte">
+  <main class="karte">
 
-  <h1>Teamarbeit „Kreislauf-Notfälle“</h1>
+    <!-- Firmenlogo -->
+    <div class="logo">
+      <img
+        src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+        alt="STAR Ambulanz Service"
+      >
+    </div>
 
-  <p class="untertitel">
-    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
-  </p>
+    <h1>Teamarbeit „Kreislauf-Notfälle“</h1>
 
-  <div class="fall">
+    <p class="untertitel">
+      Erste Hilfe im Betrieb – EH-Grundkurs
+    </p>
 
-    <h2 id="titel"></h2>
+    <!-- Erste Fallsituation -->
+    <section class="bereich fall">
+      <h2>Fallsituation 1</h2>
+      <p id="situation-1"></p>
+    </section>
 
-    <p id="situation"></p>
+    <!-- Zweite Fallsituation -->
+    <section class="bereich fall">
+      <h2>Fallsituation 2</h2>
+      <p id="situation-2"></p>
+    </section>
 
-  </div>
+    <!-- Zusatzaufgabe -->
+    <section class="bereich zusatz">
 
-  <h3>Euer Auftrag</h3>
+      <h3>
+        Zusatzaufgabe – Organisation der
+        betrieblichen Ersten Hilfe
+      </h3>
 
-  <ol>
-    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
-    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
-    <li>Welche Gefahren bestehen für die betroffene Person?</li>
-    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
-    <li>In welcher Reihenfolge handelt ihr?</li>
-    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
-    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
-  </ol>
+      <p id="zusatzfrage"></p>
 
-</div>
+      <p id="anpassungsaufgabe">
+        <strong class="anpassungs-ueberschrift">
+          Anpassung an eure Verhältnisse:
+        </strong>
+        <br>
+        <span id="anpassungstext"></span>
+      </p>
 
+    </section>
 
-<script>
+  </main>
 
-const faelle = [
+  <script>
+    "use strict";
 
-  {
-    titel: "Einsatzsituation 1",
-    situation:
-      "Ein 59-jähriger Mann sitzt während einer Besprechung plötzlich sehr unruhig auf seinem Stuhl. Er berichtet über seit etwa zehn Minuten bestehende starke Schmerzen und ein ausgeprägtes Druckgefühl hinter dem Brustbein. Die Beschwerden strahlen in seinen linken Arm und teilweise in den Unterkiefer aus. Er wirkt blass, seine Haut ist kühl und schweißig. Außerdem klagt er über Übelkeit und zunehmende Schwäche. Der Mann ist ansprechbar und kann Fragen beantworten, wirkt jedoch sehr ängstlich. Aus dem Gespräch ist bekannt, dass er wegen Bluthochdruck behandelt wird und seit vielen Jahren raucht."
-  },
+    /*
+      VIER FALLSITUATIONEN
+      Zwei unterschiedliche Fälle werden angezeigt.
+    */
 
-  {
-    titel: "Einsatzsituation 2",
-    situation:
-      "Eine 71-jährige Frau unterhält sich nach einer Veranstaltung mit anderen Personen. Plötzlich fällt auf, dass sie ihre Worte nur noch undeutlich ausspricht und auf einfache Fragen teilweise unpassend antwortet. Beim Versuch zu lächeln wirkt eine Gesichtshälfte deutlich schwächer. Außerdem kann sie ihren rechten Arm nicht mehr so gut anheben wie den linken und lässt eine Tasse aus der Hand fallen. Die Beschwerden sind vor wenigen Minuten plötzlich aufgetreten. Die Frau ist wach und atmet normal. Eine Begleitperson berichtet, dass sie Medikamente gegen Bluthochdruck und Herzrhythmusstörungen einnimmt."
-  },
+    const faelle = [
 
-  {
-    titel: "Einsatzsituation 3",
-    situation:
-      "Ein 42-jähriger Mann entwickelt wenige Minuten nach dem Verzehr eines Lebensmittels plötzlich starken Juckreiz und eine zunehmende Rötung der Haut. Kurz darauf schwellen seine Lippen sichtbar an. Er berichtet über ein Engegefühl im Hals, zunehmende Atemnot und Schwindel. Seine Stimme klingt verändert und heiser. Der Mann wirkt zunehmend unruhig, ist blass und beginnt stark zu schwitzen. Er ist noch ansprechbar, fühlt sich jedoch sehr schwach und sagt, dass er das Gefühl habe, gleich ohnmächtig zu werden. Eine Begleitperson berichtet, dass bei ihm eine schwere Allergie bekannt sei."
-  }
+      {
+        typ: "brustschmerz",
+        situation:
+          "Während einer Besprechung im Büro klagt " +
+          "ein 56-jähriger Mitarbeiter plötzlich über " +
+          "starken Druck hinter dem Brustbein. " +
+          "Die Schmerzen ziehen in den linken Arm " +
+          "und den Unterkiefer. Er ist blass, " +
+          "kaltschweißig und ihm ist übel. " +
+          "Er ist ansprechbar, wirkt aber sehr " +
+          "ängstlich. Kollegen wissen, dass er " +
+          "wegen Bluthochdruck behandelt wird."
+      },
 
-];
+      {
+        typ: "schlaganfall",
+        situation:
+          "Eine 49-jährige Mitarbeiterin spricht " +
+          "während einer Kaffeepause im Büro plötzlich " +
+          "undeutlich. Ein Mundwinkel hängt herab, " +
+          "und sie kann den rechten Arm kaum anheben. " +
+          "Die Auffälligkeiten sind vor wenigen " +
+          "Minuten aufgetreten. Sie ist wach " +
+          "und atmet normal."
+      },
 
+      {
+        typ: "allergie",
+        situation:
+          "Bei einer Feier in der Betriebskantine " +
+          "bekommt ein 38-jähriger Mitarbeiter kurz " +
+          "nach dem Essen starken Juckreiz. " +
+          "Seine Lippen schwellen an, die Stimme " +
+          "wird heiser, und er klagt über Enge " +
+          "im Hals, Atemnot und Schwindel. " +
+          "Er ist noch ansprechbar. Ein Kollege " +
+          "erwähnt eine bekannte Lebensmittelallergie."
+      },
 
-// TESTMODUS:
-// aktuell wechselt der Fall alle 30 Sekunden
+      {
+        typ: "kollaps",
+        situation:
+          "Eine 32-jährige Mitarbeiterin steht " +
+          "nach längerer Arbeit in einer warmen " +
+          "Produktionshalle auf. Ihr wird schwindelig, " +
+          "sie wird auffallend blass und sackt kurz " +
+          "zusammen. Als Kollegen zu ihr kommen, " +
+          "ist sie wieder ansprechbar, aber sehr " +
+          "schwach. Sie hat heute kaum etwas getrunken."
+      }
 
-const jetzt = new Date();
+    ];
 
-const zeitblock =
-  Math.floor(jetzt.getTime() / (30 * 1000));
+    /*
+      FÜNF ZUSATZAUFGABEN
+      Jede enthält eine Frage und eine
+      praktische Übertragungsaufgabe.
+    */
 
+    const zusatzaufgaben = [
 
-// Fall auswählen
+      {
+        frage:
+          "Welche Bedeutung hat ein AED in der " +
+          "betrieblichen Ersten Hilfe und wer " +
+          "darf ihn anwenden?",
 
-const fallNummer =
-  zeitblock % faelle.length;
+        anpassung:
+          "Findet heraus, ob euer Betrieb über " +
+          "einen AED verfügt, wo er hängt und " +
+          "wie Kollegen im Notfall dorthin gelangen."
+      },
 
-const aktuellerFall =
-  faelle[fallNummer];
+      {
+        frage:
+          "Wie wird der Rettungsdienst bei einem " +
+          "akuten Kreislaufnotfall schnell zum " +
+          "richtigen Ort geleitet?",
 
+        anpassung:
+          "Wählt einen Raum oder Arbeitsplatz " +
+          "eures Betriebs. Beschreibt den Weg " +
+          "vom Notruf bis zur Übergabe an " +
+          "den Rettungsdienst."
+      },
 
-// Fall anzeigen
+      {
+        frage:
+          "Wie können Kollegen die Ersthelfer " +
+          "bei einem plötzlich auftretenden " +
+          "Kreislaufnotfall unterstützen?",
 
-document.getElementById("titel").textContent =
-  aktuellerFall.titel;
+        anpassung:
+          "Verteilt für einen realistischen Notfall " +
+          "in eurem Arbeitsbereich die Aufgaben " +
+          "Notruf, Betreuung, AED holen und Einweisung."
+      },
 
-document.getElementById("situation").textContent =
-  aktuellerFall.situation;
+      {
+        frage:
+          "Welche Beobachtungen und zeitlichen " +
+          "Angaben sind für die Übergabe an den " +
+          "Rettungsdienst besonders wichtig?",
 
-</script>
+        anpassung:
+          "Überlegt, wie ihr in eurem Betrieb " +
+          "den Beginn der Beschwerden festhalten " +
+          "und die Informationen weitergeben könnt."
+      },
+
+      {
+        frage:
+          "Wie sind Ersthelfer und Erste-Hilfe-" +
+          "Einrichtungen in eurem Betrieb erreichbar?",
+
+        anpassung:
+          "Prüft für einen konkreten Arbeitsplatz " +
+          "die Erreichbarkeit von Ersthelfern, " +
+          "Verbandkasten und gegebenenfalls AED."
+      }
+
+    ];
+
+    /*
+      ZEITFENSTER: FÜNF STUNDEN
+    */
+
+    const zeitfenster = Math.floor(
+      Date.now() / (5 * 60 * 60 * 1000)
+    );
+
+    /*
+      PSEUDOZUFALLSFUNKTION
+      Gleicher Zeitblock = gleiche Auswahl.
+    */
+
+    function pseudoZufall(seed) {
+      let wert = seed >>> 0;
+
+      wert ^= wert << 13;
+      wert ^= wert >>> 17;
+      wert ^= wert << 5;
+
+      return wert >>> 0;
+    }
+
+    /*
+      ZWEI UNTERSCHIEDLICHE FÄLLE AUSWÄHLEN
+    */
+
+    const ersterIndex =
+      pseudoZufall(zeitfenster + 0x61c8f3) %
+      faelle.length;
+
+    const abstand =
+      1 + pseudoZufall(zeitfenster + 0xb42d79) %
+      (faelle.length - 1);
+
+    const zweiterIndex =
+      (ersterIndex + abstand) % faelle.length;
+
+    /*
+      ZUSATZAUFGABE GETRENNT AUSWÄHLEN
+    */
+
+    const zusatzIndex =
+      pseudoZufall(zeitfenster + 0xd19a47) %
+      zusatzaufgaben.length;
+
+    /*
+      INHALTE AUF DER WEBSEITE ANZEIGEN
+    */
+
+    document.getElementById("situation-1").textContent =
+      faelle[ersterIndex].situation;
+
+    document.getElementById("situation-2").textContent =
+      faelle[zweiterIndex].situation;
+
+    document.getElementById("zusatzfrage").textContent =
+      zusatzaufgaben[zusatzIndex].frage;
+
+    document.getElementById("anpassungstext").textContent =
+      zusatzaufgaben[zusatzIndex].anpassung;
+
+  </script>
 
 </body>
 </html>
