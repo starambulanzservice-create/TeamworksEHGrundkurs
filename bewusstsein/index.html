@@ -1,149 +1,395 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Teamarbeit Bewusstseins-Notfälle</title>
+  <title>Teamarbeit – Störungen des Bewusstseins</title>
 
   <style>
+    :root {
+      --star-red: #b00020;
+      --page: #f2f4f7;
+      --case: #f7f7f7;
+      --extra: #eef3f7;
+      --text: #222222;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
       margin: 0;
       padding: 20px;
-      color: #222;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .karte {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
+      max-width: 800px;
+      margin: 30px auto;
       padding: 30px;
+      background: white;
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo img {
+      display: block;
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin: 0 auto;
     }
 
     h1 {
-      color: #b00020;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      color: var(--star-red);
+      text-align: center;
+      line-height: 1.3;
     }
 
     .untertitel {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      color: #444;
+      margin: 0 0 30px;
+      color: #666;
+      text-align: center;
+    }
+
+    .bereich {
+      padding: 22px;
+      margin-top: 24px;
+      border-radius: 10px;
+      line-height: 1.7;
     }
 
     .fall {
-      background: #f7f7f7;
-      padding: 22px;
-      border-radius: 10px;
-      margin-top: 20px;
-      line-height: 1.6;
+      background: var(--case);
     }
 
-    h2 {
+    .zusatz {
+      background: var(--extra);
+    }
+
+    h2, h3 {
       margin-top: 0;
-      color: #333;
+      margin-bottom: 12px;
     }
 
-    h3 {
-      margin-top: 30px;
+    .bereich p {
+      margin-top: 0;
     }
 
-    li {
-      margin-bottom: 10px;
-      line-height: 1.5;
+    .bereich p:last-child {
+      margin-bottom: 0;
+    }
+
+    #anpassungsaufgabe {
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .karte {
+        margin: 10px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+      }
+
+      .bereich {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-<div class="karte">
+  <main class="karte">
 
-  <h1>Teamarbeit „Bewusstseins-Notfälle“</h1>
+    <!-- Firmenlogo -->
+    <div class="logo">
+      <img
+        src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+        alt="STAR Ambulanz Service"
+      >
+    </div>
 
-  <p class="untertitel">
-    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
-  </p>
+    <h1>Teamarbeit „Störungen des Bewusstseins“</h1>
 
-  <div class="fall">
+    <p class="untertitel">
+      Erste Hilfe im Betrieb – EH-Grundkurs
+    </p>
 
-    <h2 id="titel"></h2>
+    <!-- Erster angezeigter Fall -->
+    <section class="bereich fall">
+      <h2 id="titel-1"></h2>
+      <p id="situation-1"></p>
+    </section>
 
-    <p id="situation"></p>
+    <!-- Zweiter angezeigter Fall -->
+    <section class="bereich fall">
+      <h2 id="titel-2"></h2>
+      <p id="situation-2"></p>
+    </section>
 
-  </div>
+    <!-- Zusatzaufgabe -->
+    <section class="bereich zusatz">
 
-  <h3>Euer Auftrag</h3>
+      <h3>
+        Zusatzaufgabe – Organisation der
+        betrieblichen Ersten Hilfe
+      </h3>
 
-  <ol>
-    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
-    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
-    <li>Welche Gefahren bestehen für die betroffene Person?</li>
-    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
-    <li>In welcher Reihenfolge handelt ihr?</li>
-    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
-    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
-  </ol>
+      <p id="zusatzfrage"></p>
 
-</div>
+      <p id="anpassungsaufgabe">
+        <strong>Anpassung an eure Verhältnisse:</strong>
+        <span id="anpassungstext"></span>
+      </p>
 
+    </section>
 
-<script>
+  </main>
 
-const faelle = [
+  <script>
+    "use strict";
 
-  {
-    titel: "Einsatzsituation 1",
-    situation:
-      "Ein 48-jähriger Mann nimmt an einer mehrstündigen Fortbildung teil. Während einer Gruppenarbeit fällt auf, dass er zunehmend unruhig und unkonzentriert wirkt. Seine Hände zittern deutlich und er beginnt stark zu schwitzen. Auf Fragen antwortet er zunächst gereizt, kurze Zeit später jedoch zunehmend verwirrt. Er wirkt blass und sagt, dass ihm schwindelig sei. Der Mann ist noch ansprechbar und kann selbstständig sitzen. Ein anderer Teilnehmer berichtet, dass der Mann an Diabetes erkrankt ist und sich in der Mittagspause Insulin gespritzt habe. Gegessen habe er anschließend offenbar nur sehr wenig."
-  },
+    /*
+      VIER FEST NUMMERIERTE FALLSITUATIONEN
 
-  {
-    titel: "Einsatzsituation 2",
-    situation:
-      "Eine 36-jährige Frau steht während einer Veranstaltung plötzlich auf, wirkt für einen kurzen Moment abwesend und fällt anschließend zu Boden. Kurz darauf beginnt ihr gesamter Körper kräftig zu zucken. Arme und Beine bewegen sich unkontrolliert, und die Frau reagiert nicht auf Ansprache. Mehrere umstehende Personen versuchen, zu ihr zu gelangen. Nach ungefähr zwei Minuten lassen die Bewegungen langsam nach. Die Frau bleibt zunächst liegen, atmet selbstständig, wirkt jedoch sehr erschöpft und reagiert nur verzögert auf Ansprache. Eine Begleitperson berichtet, dass es in der Vergangenheit bereits einen ähnlichen Vorfall gegeben habe."
-  },
+      Die Nummer bleibt immer beim Fall.
+      Zwei unterschiedliche Fälle werden angezeigt.
+    */
 
-  {
-    titel: "Einsatzsituation 3",
-    situation:
-      "Ein 63-jähriger Mann wird in einem Aufenthaltsraum regungslos auf dem Boden gefunden. Niemand hat beobachtet, was zuvor passiert ist oder wie lange er dort bereits liegt. Neben ihm befindet sich eine umgestürzte Tasse. Auf laute Ansprache reagiert der Mann nicht. Auch nach vorsichtigem Berühren und Ansprechen zeigt er keine erkennbare Reaktion. Äußerlich sind zunächst keine starken Blutungen oder offensichtlichen schweren Verletzungen zu erkennen. Bei der weiteren Beurteilung stellt ihr fest, dass der Mann selbstständig und regelmäßig atmet. Über Vorerkrankungen oder Medikamente ist den anwesenden Personen nichts bekannt."
-  }
+    const faelle = [
 
-];
+      {
+        titel: "Bewusstsein – Fall 1",
+        typ: "unterzuckerung",
+        situation:
+          "Michael Seidel (42 Jahre) verhält sich " +
+          "während der Büroarbeit plötzlich ungewöhnlich. " +
+          "Er ist stark verschwitzt, seine Hände zittern " +
+          "und er beantwortet einfache Fragen nur noch " +
+          "verwirrt. Ein Kollege weiß, dass Herr Seidel " +
+          "Diabetes hat. Herr Seidel berichtet, dass er " +
+          "heute wegen eines dringenden Termins noch " +
+          "nichts gegessen hat."
+      },
 
+      {
+        titel: "Bewusstsein – Fall 2",
+        typ: "krampfanfall",
+        situation:
+          "Anna Fischer (31 Jahre) bricht im " +
+          "Großraumbüro plötzlich zusammen. Ihr Körper " +
+          "versteift sich, anschließend treten " +
+          "unkontrollierte Zuckungen an Armen und Beinen " +
+          "auf. Nach kurzer Zeit hören die Bewegungen " +
+          "auf. Frau Fischer liegt am Boden, " +
+          "atmet und reagiert zunächst nicht auf Ansprache."
+      },
 
-// TESTMODUS:
-// aktuell wechselt der Fall alle 30 Sekunden
+      {
+        titel: "Bewusstsein – Fall 3",
+        typ: "bewusstlos-atmung",
+        situation:
+          "Frank Schulz (54 Jahre) wird im " +
+          "Kopierraum auf dem Boden liegend gefunden. " +
+          "Er reagiert weder auf lautes Ansprechen " +
+          "noch auf vorsichtiges Berühren an den " +
+          "Schultern. Seine Atmung ist regelmäßig " +
+          "und deutlich erkennbar. Wie lange Herr Schulz " +
+          "bereits dort liegt, ist unbekannt."
+      },
 
-const jetzt = new Date();
+      {
+        titel: "Bewusstsein – Fall 4",
+        typ: "bewusstlos-keine-normale-atmung",
+        situation:
+          "Peter Wagner (60 Jahre) bricht während " +
+          "einer Besprechung plötzlich zusammen. " +
+          "Er liegt regungslos am Boden und reagiert " +
+          "nicht auf Ansprache oder vorsichtiges " +
+          "Rütteln an den Schultern. Ein Kollege " +
+          "bemerkt vereinzelte, ungewöhnlich " +
+          "schnappende Atembewegungen. " +
+          "Eine normale Atmung ist nicht erkennbar."
+      }
 
-const zeitblock =
-  Math.floor(jetzt.getTime() / (30 * 1000));
+    ];
 
+    /*
+      FÜNF ZUSATZAUFGABEN
 
-// Fall auswählen
+      Jede Zusatzaufgabe enthält eine Frage
+      und die Übertragung auf den eigenen Betrieb.
+    */
 
-const fallNummer =
-  zeitblock % faelle.length;
+    const zusatzaufgaben = [
 
-const aktuellerFall =
-  faelle[fallNummer];
+      {
+        frage:
+          "Warum ist die Dokumentation von " +
+          "Erste-Hilfe-Leistungen im Betrieb " +
+          "wichtig und welche Angaben " +
+          "sollten festgehalten werden?",
 
+        anpassung:
+          "Findet heraus, wie Erste-Hilfe-Leistungen " +
+          "in eurem Betrieb dokumentiert werden. " +
+          "Überlegt, wo die entsprechenden " +
+          "Unterlagen oder digitalen Möglichkeiten " +
+          "zu finden sind."
+      },
 
-// Fall anzeigen
+      {
+        frage:
+          "Wie können Kollegen einen Ersthelfer " +
+          "bei einer bewusstlosen Person " +
+          "sinnvoll unterstützen?",
 
-document.getElementById("titel").textContent =
-  aktuellerFall.titel;
+        anpassung:
+          "Verteilt für einen Notfall in eurem " +
+          "Arbeitsbereich die Aufgaben " +
+          "Notruf, AED holen, Rettungsdienst " +
+          "einweisen und weitere Kollegen " +
+          "informieren."
+      },
 
-document.getElementById("situation").textContent =
-  aktuellerFall.situation;
+      {
+        frage:
+          "Welche Informationen sollten bei " +
+          "einer Bewusstseinsstörung an den " +
+          "Rettungsdienst übergeben werden?",
 
-</script>
+        anpassung:
+          "Überlegt, wie ihr in eurem Betrieb " +
+          "den Zeitpunkt des Auffindens, " +
+          "beobachtete Veränderungen und " +
+          "bereits durchgeführte Maßnahmen " +
+          "festhalten und weitergeben könnt."
+      },
+
+      {
+        frage:
+          "Wie ist die interne Alarmierung " +
+          "organisiert, wenn ein Mitarbeiter " +
+          "bewusstlos aufgefunden wird?",
+
+        anpassung:
+          "Beschreibt für einen konkreten " +
+          "Arbeitsplatz in eurem Betrieb, " +
+          "wie Ersthelfer alarmiert werden, " +
+          "wer den Notruf absetzt und wer " +
+          "den Rettungsdienst einweist."
+      },
+
+      {
+        frage:
+          "Warum sind regelmäßige " +
+          "Fortbildungen für betriebliche " +
+          "Ersthelfer wichtig?",
+
+        anpassung:
+          "Überlegt, wie in eurem Betrieb " +
+          "sichergestellt wird, dass Ersthelfer " +
+          "ihre Kenntnisse regelmäßig auffrischen " +
+          "und ausreichend Ersthelfer " +
+          "zur Verfügung stehen."
+      }
+
+    ];
+
+    /*
+      AUTOMATISCHER WECHSEL ALLE 5 STUNDEN
+
+      Innerhalb eines Zeitfensters erhalten
+      alle Teilnehmer dieselbe Zusammenstellung.
+    */
+
+    const zeitfenster = Math.floor(
+      Date.now() / (5 * 60 * 60 * 1000)
+    );
+
+    /*
+      DETERMINISTISCHE ZUFALLSFUNKTION
+    */
+
+    function pseudoZufall(seed) {
+      let wert = seed >>> 0;
+
+      wert ^= wert << 13;
+      wert ^= wert >>> 17;
+      wert ^= wert << 5;
+
+      return wert >>> 0;
+    }
+
+    /*
+      ZWEI UNTERSCHIEDLICHE FÄLLE AUSWÄHLEN
+    */
+
+    const ersterIndex =
+      pseudoZufall(zeitfenster + 0x83e7b5) %
+      faelle.length;
+
+    const abstand =
+      1 + pseudoZufall(zeitfenster + 0xd64f92) %
+      (faelle.length - 1);
+
+    const zweiterIndex =
+      (ersterIndex + abstand) % faelle.length;
+
+    /*
+      ZUSATZAUFGABE UNABHÄNGIG AUSWÄHLEN
+    */
+
+    const zusatzIndex =
+      pseudoZufall(zeitfenster + 0xf39c76) %
+      zusatzaufgaben.length;
+
+    /*
+      FALLTITEL UND TEXTE ANZEIGEN
+    */
+
+    document.getElementById("titel-1").textContent =
+      faelle[ersterIndex].titel;
+
+    document.getElementById("situation-1").textContent =
+      faelle[ersterIndex].situation;
+
+    document.getElementById("titel-2").textContent =
+      faelle[zweiterIndex].titel;
+
+    document.getElementById("situation-2").textContent =
+      faelle[zweiterIndex].situation;
+
+    /*
+      ZUSATZAUFGABE ANZEIGEN
+    */
+
+    document.getElementById("zusatzfrage").textContent =
+      zusatzaufgaben[zusatzIndex].frage;
+
+    document.getElementById("anpassungstext").textContent =
+      zusatzaufgaben[zusatzIndex].anpassung;
+
+  </script>
 
 </body>
 </html>
