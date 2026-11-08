@@ -4,8 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Teamarbeit – Störungen der Atmung</title>
+  <title>Teamarbeit – Atmung</title>
 
   <style>
     :root {
@@ -16,9 +15,7 @@
       --text: #222222;
     }
 
-    * {
-      box-sizing: border-box;
-    }
+    * { box-sizing: border-box; }
 
     body {
       margin: 0;
@@ -70,57 +67,30 @@
       line-height: 1.7;
     }
 
-    .fall {
-      background: var(--case);
-    }
-
-    .zusatz {
-      background: var(--extra);
-    }
+    .fall { background: var(--case); }
+    .zusatz { background: var(--extra); }
 
     h2, h3 {
       margin-top: 0;
       margin-bottom: 12px;
     }
 
-    .bereich p {
-      margin-top: 0;
-    }
-
-    .bereich p:last-child {
-      margin-bottom: 0;
-    }
-
-    #anpassungsaufgabe {
-      margin-top: 20px;
-    }
+    .bereich p { margin-top: 0; }
+    .bereich p:last-child { margin-bottom: 0; }
+    #anpassungsaufgabe { margin-top: 20px; }
 
     @media (max-width: 600px) {
-      body {
-        padding: 10px;
-      }
-
-      .karte {
-        margin: 10px auto;
-        padding: 20px;
-      }
-
-      h1 {
-        font-size: 1.6rem;
-      }
-
-      .bereich {
-        padding: 18px;
-      }
+      body { padding: 10px; }
+      .karte { margin: 10px auto; padding: 20px; }
+      h1 { font-size: 1.6rem; }
+      .bereich { padding: 18px; }
     }
   </style>
 </head>
 
 <body>
-
   <main class="karte">
 
-    <!-- Firmenlogo -->
     <div class="logo">
       <img
         src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
@@ -128,27 +98,22 @@
       >
     </div>
 
-    <h1>Teamarbeit „Störungen der Atmung“</h1>
-
+    <h1>Teamarbeit „Atmung“</h1>
     <p class="untertitel">
       Erste Hilfe im Betrieb – EH-Grundkurs
     </p>
 
-    <!-- Erster angezeigter Fall -->
     <section class="bereich fall">
-      <h2 id="titel-1"></h2>
+      <h2>Fall 1</h2>
       <p id="situation-1"></p>
     </section>
 
-    <!-- Zweiter angezeigter Fall -->
     <section class="bereich fall">
-      <h2 id="titel-2"></h2>
+      <h2>Fall 2</h2>
       <p id="situation-2"></p>
     </section>
 
-    <!-- Zusatzaufgabe -->
     <section class="bereich zusatz">
-
       <h3>
         Zusatzaufgabe – Organisation der
         betrieblichen Ersten Hilfe
@@ -160,7 +125,6 @@
         <strong>Anpassung an eure Verhältnisse:</strong>
         <span id="anpassungstext"></span>
       </p>
-
     </section>
 
   </main>
@@ -168,21 +132,12 @@
   <script>
     "use strict";
 
-    /*
-      VIER FEST NUMMERIERTE FALLSITUATIONEN
-
-      Die Nummer bleibt immer beim Fall.
-      Zwei unterschiedliche Fälle werden angezeigt.
-    */
-
     const faelle = [
-
       {
-        titel: "Atmung – Fall 1",
         typ: "asthma",
         situation:
-          "Während einer Besprechung bekommt eine " +
-          "34-jährige Mitarbeiterin zunehmend " +
+          "Während einer Besprechung bekommt " +
+          "Katharina Weber (34 Jahre) zunehmend " +
           "Schwierigkeiten beim Atmen. Sie sitzt " +
           "nach vorne gebeugt auf ihrem Stuhl, " +
           "stützt die Arme auf den Oberschenkeln " +
@@ -191,12 +146,10 @@
           "In ihrer Hand hält sie ein kleines " +
           "Inhalationsspray."
       },
-
       {
-        titel: "Atmung – Fall 2",
         typ: "verschlucken",
         situation:
-          "Ein 45-jähriger Mitarbeiter verschluckt " +
+          "Stefan Müller (45 Jahre) verschluckt " +
           "sich während der Mittagspause in der " +
           "Betriebskantine an einem Stück Fleisch. " +
           "Er steht plötzlich auf, greift sich " +
@@ -206,147 +159,105 @@
           "Sein Gesicht verfärbt sich zunehmend " +
           "bläulich."
       },
-
       {
-        titel: "Atmung – Fall 3",
         typ: "chronische-lungenerkrankung",
         situation:
-          "Ein 58-jähriger Mitarbeiter kommt vom " +
+          "Andreas Richter (58 Jahre) kommt vom " +
           "Firmenparkplatz ins Büro. Schon nach " +
           "wenigen Schritten muss er stehen bleiben, " +
           "weil er kaum Luft bekommt. Er atmet " +
           "schnell und angestrengt, stützt sich " +
           "an einem Tisch ab und kann nur einzelne " +
           "Wörter sprechen. Kollegen wissen, dass " +
-          "er seit Jahren an einer chronischen " +
-          "Lungenerkrankung leidet."
+          "Herr Richter seit Jahren an einer " +
+          "chronischen Lungenerkrankung leidet."
       },
-
       {
-        titel: "Atmung – Fall 4",
         typ: "ploetzliche-atemnot",
         situation:
-          "Ein 41-jähriger Mitarbeiter trägt mehrere " +
+          "Christian Vogel (41 Jahre) trägt mehrere " +
           "Kartons in ein Lagerregal. Kurz darauf " +
           "klagt er über plötzlich aufgetretene " +
           "Atemnot und ein Engegefühl im Brustkorb. " +
-          "Er wirkt unruhig, atmet auffallend schnell " +
-          "und setzt sich auf eine Palette. " +
-          "Ein Kollege bemerkt, dass er sehr " +
-          "blass geworden ist."
+          "Er wirkt unruhig, atmet auffallend " +
+          "schnell und setzt sich auf eine Palette. " +
+          "Ein Kollege bemerkt, dass Herr Vogel " +
+          "sehr blass geworden ist."
       }
-
     ];
 
-    /*
-      FÜNF ZUSATZAUFGABEN
-
-      Jede Zusatzaufgabe enthält eine Frage
-      und die Übertragung auf den eigenen Betrieb.
-    */
-
     const zusatzaufgaben = [
-
       {
         frage:
           "Wie können betriebliche Ersthelfer " +
           "bei einem Atemnotfall schnell " +
           "erreicht werden?",
-
         anpassung:
           "Überlegt, wie ihr an eurem Arbeitsplatz " +
-          "die zuständigen Ersthelfer findet " +
-          "und alarmiert. Beschreibt auch, " +
-          "was außerhalb der üblichen " +
-          "Arbeitszeiten möglich ist."
+          "die zuständigen Ersthelfer findet und " +
+          "alarmiert. Beschreibt auch, was außerhalb " +
+          "der üblichen Arbeitszeiten möglich ist."
       },
-
       {
         frage:
           "Woran erkennt ein Ersthelfer, dass " +
           "bei Atemnot dringend der Rettungsdienst " +
           "gerufen werden muss? Wo liegen die " +
           "Grenzen der betrieblichen Ersten Hilfe?",
-
         anpassung:
           "Besprecht, wer in eurem Betrieb " +
           "den Notruf 112 absetzt und wie " +
           "die interne Alarmierung organisiert ist."
       },
-
       {
         frage:
           "Wie kann sichergestellt werden, " +
-          "dass der Rettungsdienst auch " +
-          "abgelegene oder schwer zugängliche " +
-          "Arbeitsbereiche schnell erreicht?",
-
+          "dass der Rettungsdienst auch abgelegene " +
+          "oder schwer zugängliche Arbeitsbereiche " +
+          "schnell erreicht?",
         anpassung:
           "Wählt einen schwer erreichbaren " +
           "Arbeitsplatz in eurem Betrieb. " +
           "Beschreibt, wie der Rettungsdienst " +
           "dorthin eingewiesen werden kann."
       },
-
       {
         frage:
           "Wie können Ersthelfer eine Person " +
           "mit Atemnot unterstützen, ohne " +
           "sie zusätzlich zu belasten?",
-
         anpassung:
-          "Überlegt, welche Möglichkeiten " +
-          "es an eurem Arbeitsplatz gibt, " +
-          "eine betroffene Person in einer " +
-          "für sie angenehmen Position " +
-          "zu betreuen und vor Unruhe " +
-          "abzuschirmen."
+          "Überlegt, welche Möglichkeiten es " +
+          "an eurem Arbeitsplatz gibt, eine " +
+          "betroffene Person in einer für sie " +
+          "angenehmen Position zu betreuen und " +
+          "vor Unruhe abzuschirmen."
       },
-
       {
         frage:
           "Welche organisatorischen Schwierigkeiten " +
-          "können bei einem Atemnotfall in " +
-          "einem großen oder unübersichtlichen " +
-          "Betrieb entstehen?",
-
+          "können bei einem Atemnotfall in einem " +
+          "großen oder unübersichtlichen Betrieb " +
+          "entstehen?",
         anpassung:
           "Prüft für euren Arbeitsbereich, " +
           "ob Ersthelfer, Notrufmöglichkeiten " +
           "und Rettungswege ausreichend " +
           "bekannt und erreichbar sind."
       }
-
     ];
-
-    /*
-      AUTOMATISCHER WECHSEL ALLE 5 STUNDEN
-
-      Innerhalb eines Zeitfensters erhalten
-      alle Teilnehmer dieselbe Zusammenstellung.
-    */
 
     const zeitfenster = Math.floor(
       Date.now() / (5 * 60 * 60 * 1000)
     );
 
-    /*
-      DETERMINISTISCHE ZUFALLSFUNKTION
-    */
-
     function pseudoZufall(seed) {
       let wert = seed >>> 0;
-
       wert ^= wert << 13;
       wert ^= wert >>> 17;
       wert ^= wert << 5;
-
       return wert >>> 0;
     }
-
-    /*
-      ZWEI UNTERSCHIEDLICHE FÄLLE AUSWÄHLEN
-    */
 
     const ersterIndex =
       pseudoZufall(zeitfenster + 0x72d9a4) %
@@ -359,41 +270,21 @@
     const zweiterIndex =
       (ersterIndex + abstand) % faelle.length;
 
-    /*
-      ZUSATZAUFGABE UNABHÄNGIG AUSWÄHLEN
-    */
-
     const zusatzIndex =
       pseudoZufall(zeitfenster + 0xe28b65) %
       zusatzaufgaben.length;
 
-    /*
-      FALLTITEL UND TEXTE ANZEIGEN
-    */
-
-    document.getElementById("titel-1").textContent =
-      faelle[ersterIndex].titel;
-
     document.getElementById("situation-1").textContent =
       faelle[ersterIndex].situation;
 
-    document.getElementById("titel-2").textContent =
-      faelle[zweiterIndex].titel;
-
     document.getElementById("situation-2").textContent =
       faelle[zweiterIndex].situation;
-
-    /*
-      ZUSATZAUFGABE ANZEIGEN
-    */
 
     document.getElementById("zusatzfrage").textContent =
       zusatzaufgaben[zusatzIndex].frage;
 
     document.getElementById("anpassungstext").textContent =
       zusatzaufgaben[zusatzIndex].anpassung;
-
   </script>
-
 </body>
 </html>
