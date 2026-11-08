@@ -3,20 +3,16 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Teamarbeit – Kreislauf-Notfälle</title>
 
   <style>
     :root {
       --star-red: #b00020;
-      --text: #222;
-      --muted: #5f6670;
       --page: #f2f4f7;
-      --card: #ffffff;
       --case: #f7f7f7;
       --extra: #eef3f7;
+      --text: #222222;
     }
 
     * {
@@ -35,39 +31,42 @@
       max-width: 800px;
       margin: 30px auto;
       padding: 30px;
-      background: var(--card);
+      background: white;
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
     }
 
     .logo {
-      margin-bottom: 22px;
       text-align: center;
+      margin-bottom: 25px;
     }
 
     .logo img {
-      width: min(80%, 280px);
+      display: block;
+      width: 100%;
+      max-width: 300px;
       height: auto;
+      margin: 0 auto;
     }
 
     h1 {
       margin: 0 0 10px;
       color: var(--star-red);
       text-align: center;
-      line-height: 1.25;
+      line-height: 1.3;
     }
 
     .untertitel {
-      margin: 0 0 28px;
-      color: var(--muted);
+      margin: 0 0 30px;
+      color: #666;
       text-align: center;
     }
 
     .bereich {
-      margin-top: 24px;
       padding: 22px;
+      margin-top: 24px;
       border-radius: 10px;
-      line-height: 1.65;
+      line-height: 1.7;
     }
 
     .fall {
@@ -79,23 +78,20 @@
     }
 
     h2, h3 {
-      margin: 0 0 12px;
+      margin-top: 0;
+      margin-bottom: 12px;
     }
 
-    #situation-1,
-    #situation-2,
-    #zusatzfrage,
+    .bereich p {
+      margin-top: 0;
+    }
+
+    .bereich p:last-child {
+      margin-bottom: 0;
+    }
+
     #anpassungsaufgabe {
-      margin: 0;
-    }
-
-    #anpassungsaufgabe {
-      margin-top: 18px;
-    }
-
-    .anpassungs-ueberschrift {
-      display: inline-block;
-      margin-bottom: 5px;
+      margin-top: 20px;
     }
 
     @media (max-width: 600px) {
@@ -109,7 +105,7 @@
       }
 
       h1 {
-        font-size: 1.65rem;
+        font-size: 1.6rem;
       }
 
       .bereich {
@@ -137,13 +133,13 @@
       Erste Hilfe im Betrieb – EH-Grundkurs
     </p>
 
-    <!-- Erste Fallsituation -->
+    <!-- Fallsituation 1 -->
     <section class="bereich fall">
       <h2>Fallsituation 1</h2>
       <p id="situation-1"></p>
     </section>
 
-    <!-- Zweite Fallsituation -->
+    <!-- Fallsituation 2 -->
     <section class="bereich fall">
       <h2>Fallsituation 2</h2>
       <p id="situation-2"></p>
@@ -160,10 +156,7 @@
       <p id="zusatzfrage"></p>
 
       <p id="anpassungsaufgabe">
-        <strong class="anpassungs-ueberschrift">
-          Anpassung an eure Verhältnisse:
-        </strong>
-        <br>
+        <strong>Anpassung an eure Verhältnisse:</strong>
         <span id="anpassungstext"></span>
       </p>
 
@@ -176,146 +169,118 @@
 
     /*
       VIER FALLSITUATIONEN
-      Zwei unterschiedliche Fälle werden angezeigt.
+      Jeweils zwei werden angezeigt.
     */
 
     const faelle = [
-
       {
         typ: "brustschmerz",
         situation:
-          "Während einer Besprechung im Büro klagt " +
-          "ein 56-jähriger Mitarbeiter plötzlich über " +
-          "starken Druck hinter dem Brustbein. " +
-          "Die Schmerzen ziehen in den linken Arm " +
-          "und den Unterkiefer. Er ist blass, " +
-          "kaltschweißig und ihm ist übel. " +
-          "Er ist ansprechbar, wirkt aber sehr " +
-          "ängstlich. Kollegen wissen, dass er " +
-          "wegen Bluthochdruck behandelt wird."
+          "Während einer Besprechung im Büro klagt ein " +
+          "56-jähriger Mitarbeiter plötzlich über starken " +
+          "Druck hinter dem Brustbein. Die Schmerzen ziehen " +
+          "in den linken Arm und den Unterkiefer. Er ist " +
+          "blass, kaltschweißig und ihm ist übel. " +
+          "Er ist ansprechbar, wirkt aber sehr ängstlich. " +
+          "Kollegen wissen, dass er wegen Bluthochdruck " +
+          "behandelt wird."
       },
-
       {
         typ: "schlaganfall",
         situation:
-          "Eine 49-jährige Mitarbeiterin spricht " +
-          "während einer Kaffeepause im Büro plötzlich " +
-          "undeutlich. Ein Mundwinkel hängt herab, " +
-          "und sie kann den rechten Arm kaum anheben. " +
-          "Die Auffälligkeiten sind vor wenigen " +
-          "Minuten aufgetreten. Sie ist wach " +
-          "und atmet normal."
+          "Eine 49-jährige Mitarbeiterin spricht während " +
+          "einer Kaffeepause im Büro plötzlich undeutlich. " +
+          "Ein Mundwinkel hängt herab, und sie kann den " +
+          "rechten Arm kaum anheben. Die Auffälligkeiten " +
+          "sind vor wenigen Minuten aufgetreten. " +
+          "Sie ist wach und atmet normal."
       },
-
       {
         typ: "allergie",
         situation:
-          "Bei einer Feier in der Betriebskantine " +
-          "bekommt ein 38-jähriger Mitarbeiter kurz " +
-          "nach dem Essen starken Juckreiz. " +
-          "Seine Lippen schwellen an, die Stimme " +
-          "wird heiser, und er klagt über Enge " +
-          "im Hals, Atemnot und Schwindel. " +
-          "Er ist noch ansprechbar. Ein Kollege " +
-          "erwähnt eine bekannte Lebensmittelallergie."
+          "Bei einer Feier in der Betriebskantine bekommt " +
+          "ein 38-jähriger Mitarbeiter kurz nach dem Essen " +
+          "starken Juckreiz. Seine Lippen schwellen an, " +
+          "die Stimme wird heiser, und er klagt über Enge " +
+          "im Hals, Atemnot und Schwindel. Er ist noch " +
+          "ansprechbar. Ein Kollege erwähnt eine bekannte " +
+          "Lebensmittelallergie."
       },
-
       {
         typ: "kollaps",
         situation:
-          "Eine 32-jährige Mitarbeiterin steht " +
-          "nach längerer Arbeit in einer warmen " +
-          "Produktionshalle auf. Ihr wird schwindelig, " +
-          "sie wird auffallend blass und sackt kurz " +
-          "zusammen. Als Kollegen zu ihr kommen, " +
-          "ist sie wieder ansprechbar, aber sehr " +
-          "schwach. Sie hat heute kaum etwas getrunken."
+          "Eine 32-jährige Mitarbeiterin steht nach " +
+          "längerer Arbeit in einer warmen Produktionshalle " +
+          "auf. Ihr wird schwindelig, sie wird auffallend " +
+          "blass und sackt kurz zusammen. Als Kollegen zu " +
+          "ihr kommen, ist sie wieder ansprechbar, aber " +
+          "sehr schwach. Sie hat heute kaum etwas getrunken."
       }
-
     ];
 
     /*
       FÜNF ZUSATZAUFGABEN
-      Jede enthält eine Frage und eine
-      praktische Übertragungsaufgabe.
     */
 
     const zusatzaufgaben = [
-
       {
         frage:
           "Welche Bedeutung hat ein AED in der " +
-          "betrieblichen Ersten Hilfe und wer " +
-          "darf ihn anwenden?",
-
+          "betrieblichen Ersten Hilfe und wer darf " +
+          "ihn anwenden?",
         anpassung:
-          "Findet heraus, ob euer Betrieb über " +
-          "einen AED verfügt, wo er hängt und " +
-          "wie Kollegen im Notfall dorthin gelangen."
+          "Findet heraus, ob euer Betrieb über einen " +
+          "AED verfügt, wo er hängt und wie Kollegen " +
+          "im Notfall dorthin gelangen."
       },
-
       {
         frage:
           "Wie wird der Rettungsdienst bei einem " +
           "akuten Kreislaufnotfall schnell zum " +
           "richtigen Ort geleitet?",
-
         anpassung:
-          "Wählt einen Raum oder Arbeitsplatz " +
-          "eures Betriebs. Beschreibt den Weg " +
-          "vom Notruf bis zur Übergabe an " +
-          "den Rettungsdienst."
+          "Wählt einen Raum oder Arbeitsplatz eures " +
+          "Betriebs. Beschreibt den Weg vom Notruf " +
+          "bis zur Übergabe an den Rettungsdienst."
       },
-
       {
         frage:
-          "Wie können Kollegen die Ersthelfer " +
-          "bei einem plötzlich auftretenden " +
-          "Kreislaufnotfall unterstützen?",
-
+          "Wie können Kollegen die Ersthelfer bei " +
+          "einem plötzlich auftretenden Kreislaufnotfall " +
+          "unterstützen?",
         anpassung:
           "Verteilt für einen realistischen Notfall " +
           "in eurem Arbeitsbereich die Aufgaben " +
           "Notruf, Betreuung, AED holen und Einweisung."
       },
-
       {
         frage:
-          "Welche Beobachtungen und zeitlichen " +
-          "Angaben sind für die Übergabe an den " +
-          "Rettungsdienst besonders wichtig?",
-
+          "Welche Beobachtungen und zeitlichen Angaben " +
+          "sind für die Übergabe an den Rettungsdienst " +
+          "besonders wichtig?",
         anpassung:
-          "Überlegt, wie ihr in eurem Betrieb " +
-          "den Beginn der Beschwerden festhalten " +
-          "und die Informationen weitergeben könnt."
+          "Überlegt, wie ihr in eurem Betrieb den " +
+          "Beginn der Beschwerden festhalten und " +
+          "die Informationen weitergeben könnt."
       },
-
       {
         frage:
           "Wie sind Ersthelfer und Erste-Hilfe-" +
           "Einrichtungen in eurem Betrieb erreichbar?",
-
         anpassung:
           "Prüft für einen konkreten Arbeitsplatz " +
           "die Erreichbarkeit von Ersthelfern, " +
           "Verbandkasten und gegebenenfalls AED."
       }
-
     ];
 
     /*
-      ZEITFENSTER: FÜNF STUNDEN
+      AUTOMATISCHER WECHSEL ALLE 5 STUNDEN
     */
 
     const zeitfenster = Math.floor(
       Date.now() / (5 * 60 * 60 * 1000)
     );
-
-    /*
-      PSEUDOZUFALLSFUNKTION
-      Gleicher Zeitblock = gleiche Auswahl.
-    */
 
     function pseudoZufall(seed) {
       let wert = seed >>> 0;
@@ -328,7 +293,7 @@
     }
 
     /*
-      ZWEI UNTERSCHIEDLICHE FÄLLE AUSWÄHLEN
+      ZWEI UNTERSCHIEDLICHE FÄLLE
     */
 
     const ersterIndex =
@@ -343,7 +308,7 @@
       (ersterIndex + abstand) % faelle.length;
 
     /*
-      ZUSATZAUFGABE GETRENNT AUSWÄHLEN
+      ZUSATZAUFGABE AUSWÄHLEN
     */
 
     const zusatzIndex =
@@ -351,7 +316,7 @@
       zusatzaufgaben.length;
 
     /*
-      INHALTE AUF DER WEBSEITE ANZEIGEN
+      INHALTE ANZEIGEN
     */
 
     document.getElementById("situation-1").textContent =
